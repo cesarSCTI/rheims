@@ -230,7 +230,9 @@
         }
       },
       "custom_css": [
-        ".categories-drawer__group-title {color: #174895;}"
+        ".categories-drawer__group-title {color: #174895;}",
+        "span.categories-drawer__link-label {font-family: var(--font-heading--family);}",
+        "li.categories-drawer__group-item {border-block-end: 1px solid #174895;}"
       ],
       "settings": {
         "logo_position": "left",
