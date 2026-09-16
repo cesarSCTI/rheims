@@ -860,6 +860,7 @@
     "input_field": "Campo de entrada"
   },
   "content": {
+    "category_group_max_links": "Agrega hasta 10 links.",
     "advanced": "Avanzado",
     "background_image": "Imagen de fondo",
     "background_video": "Video de fondo",

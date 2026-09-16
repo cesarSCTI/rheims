@@ -71,21 +71,21 @@
                 "link_filtros": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Filtros"
                   }
                 },
                 "link_insumos": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Insumos"
                   }
                 },
                 "link_refacciones": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Refacciones"
                   }
                 }
@@ -102,7 +102,7 @@
                 "link_consumibles": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Consumibles"
                   }
                 }
@@ -119,42 +119,42 @@
                 "link_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Componentes vitales"
                   }
                 },
                 "link_consumibles": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Consumibles"
                   }
                 },
                 "link_herramientas_limpieza": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Herramientas de limpieza"
                   }
                 },
                 "link_refacciones": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Refacciones"
                   }
                 },
                 "link_perifericos": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Periféricos"
                   }
                 },
                 "link_software": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Software"
                   }
                 }
@@ -178,7 +178,7 @@
                 "link_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": null,
+                    "collection": "",
                     "title": "Componentes vitales"
                   }
                 }
