@@ -269,7 +269,10 @@
           "settings": {
             "heading": "Insumos",
             "heading_tag": "h3",
-            "collections": [],
+            "collections": [
+              "compresores-insumos-aceite",
+              "compresores-insumos-material-desecante"
+            ],
             "custom_labels": "",
             "desktop_width": "4",
             "tablet_width": "12",
@@ -299,9 +302,13 @@
           "settings": {
             "heading": "Refacciones",
             "heading_tag": "h3",
-            "collections": [],
+            "collections": [
+              "compresores-refacciones-valvulas",
+              "compresores-refacciones-tornillos",
+              "compresores-refacciones-sensores"
+            ],
             "custom_labels": "",
-            "desktop_width": "12",
+            "desktop_width": "6",
             "tablet_width": "12",
             "columns_desktop": 3,
             "columns_tablet": 3,
@@ -359,8 +366,8 @@
         "image_bottom_spacing": 8,
         "image_hover_scale": 103,
         "collection_title_line_height": 125,
-        "padding_top": 12,
-        "padding_bottom": 15,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "padding_horizontal": 35,
         "padding_top_mobile": 25,
         "padding_bottom_mobile": 25,
