@@ -9,83 +9,102 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "custom_hero_slider_WzUKfm": {
+      "type": "custom-hero-slider",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "slide_Y4NUTK": {
+          "type": "slide",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "image": "shopify://shop_images/4bb1e0b6ba94c1e472d338e3c237a13fcf1fbeab.jpg",
+            "overlay_color": "#003D7A",
+            "overlay_opacity": 50,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "text_alignment": "center",
+            "content_max_width": 700,
+            "heading": "Refacciones y consumibles para maquinaria.",
+            "heading_tag": "h2",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 42,
+            "heading_size_mobile": 32,
+            "heading_weight": "700",
+            "subtitle": "Insumos para equipo láser, dobladoras, CNC routers y más.",
+            "subtitle_color": "#FFFFFF",
+            "subtitle_size_desktop": 18,
+            "subtitle_size_mobile": 16,
+            "button_label": "Ver todos los productos",
+            "button_link": "shopify://collections/all",
+            "button_background": "#FFC400",
+            "button_text_color": "#000000",
+            "button_background_hover": "#FFFFFF",
+            "button_text_color_hover": "#000000",
+            "button_radius": 10
+          }
+        }
+      },
+      "block_order": [
+        "slide_Y4NUTK"
+      ],
+      "name": "Hero slider configurable",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_desktop": 500,
+        "height_mobile": 520,
+        "padding_horizontal_desktop": 40,
+        "padding_vertical_desktop": 40,
+        "padding_horizontal_mobile": 20,
+        "padding_vertical_mobile": 30,
+        "arrow_background": "#FFFFFF",
+        "arrow_color": "#111111",
+        "dot_color": "#FFFFFF",
+        "dot_active_color": "#FFC400"
+      }
+    },
+    "popular_categories_test": {
+      "type": "popular-categories",
+      "blocks": {
+        "card_1": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Filtros"
           },
           "blocks": {}
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "card_2": {
+          "type": "_popular-category-card",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "collection": "",
+            "title": "Insumos"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "card_1",
+        "card_2"
       ],
-      "name": "t:names.hero",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
+        "heading": "Categorías populares",
+        "heading_tag": "h2",
+        "heading_color": "",
+        "button_label": "Ver todos los productos",
+        "button_link": "",
+        "button_font": "accent",
+        "button_background_color": "",
+        "button_text_color": "",
+        "button_hover_background_color": "",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "image_ratio": "1 / 1",
+        "image_radius": 0,
+        "gap": 16,
         "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_list_fa6P9H": {
@@ -111,11 +130,13 @@
             "height": "fit",
             "custom_height": 100,
             "background_media": "none",
+            "background_color": "",
             "video_position": "cover",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -138,6 +159,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -155,6 +177,10 @@
                 "label": "View all",
                 "open_in_new_tab": false,
                 "style_class": "button-unstyled",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -174,9 +200,11 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
+            "background_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
+            "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -192,6 +220,7 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -214,6 +243,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
+                "text_color": "",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -239,6 +269,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -270,28 +301,14 @@
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
+        "background_color": "",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
-    },
-    "popular_categories_test": {
-      "type": "popular-categories",
-      "blocks": {
-        "card_1": {
-          "type": "_popular-category-card",
-          "settings": { "collection": "", "title": "Filtros" }
-        },
-        "card_2": {
-          "type": "_popular-category-card",
-          "settings": { "collection": "", "title": "Insumos" }
-        }
-      },
-      "block_order": ["card_1", "card_2"],
-      "settings": {}
     }
   },
   "order": [
-    "hero_jVaWmY",
+    "custom_hero_slider_WzUKfm",
     "popular_categories_test",
     "product_list_fa6P9H"
   ]
