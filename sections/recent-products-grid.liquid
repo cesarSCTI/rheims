@@ -1,0 +1,1136 @@
+{% liquid
+  assign section_id = 'recent-products-grid-' | append: section.id
+  assign heading_tag = section.settings.heading_tag | default: 'h2'
+  assign selected_collection = section.settings.collection
+  assign products_limit = section.settings.products_limit
+%}
+
+<section
+  id="{{ section_id }}"
+  class="recent-products-grid"
+>
+  <div class="recent-products-grid__container">
+
+    {% if section.settings.heading != blank %}
+      <{{ heading_tag }}
+        class="recent-products-grid__heading"
+      >
+        {{ section.settings.heading }}
+      </{{ heading_tag }}>
+    {% endif %}
+
+    <div class="recent-products-grid__grid">
+
+      {% if selected_collection != blank and selected_collection.products_count > 0 %}
+
+        {% for product in selected_collection.products limit: products_limit %}
+
+          <article class="recent-products-grid__card">
+
+            <a
+              href="{{ product.url }}"
+              class="recent-products-grid__image-link"
+              aria-label="{{ product.title | escape }}"
+            >
+
+              <div class="recent-products-grid__image-wrapper">
+
+                {% if product.featured_image != blank %}
+
+                  {{
+                    product.featured_image
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'recent-products-grid__image',
+                      widths: '300, 400, 500, 600, 750, 900',
+                      sizes: '(max-width: 749px) 50vw, (max-width: 989px) 33vw, 25vw',
+                      loading: 'lazy'
+                  }}
+
+                {% else %}
+
+                  {{ 'product-1' | placeholder_svg_tag: 'recent-products-grid__placeholder' }}
+
+                {% endif %}
+
+              </div>
+
+            </a>
+
+            <div class="recent-products-grid__info">
+
+              <a
+                href="{{ product.url }}"
+                class="recent-products-grid__product-title"
+              >
+                {{ product.title }}
+              </a>
+
+              <div class="recent-products-grid__price">
+
+                {% if product.compare_at_price > product.price %}
+
+                  <span class="recent-products-grid__price-current">
+                    {{ product.price | money }}
+                  </span>
+
+                  <span class="recent-products-grid__price-compare">
+                    {{ product.compare_at_price | money }}
+                  </span>
+
+                {% else %}
+
+                  <span class="recent-products-grid__price-current">
+                    {{ product.price | money }}
+                  </span>
+
+                {% endif %}
+
+              </div>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      {% else %}
+
+        {% for i in (1..4) %}
+
+          <article class="recent-products-grid__card recent-products-grid__card--placeholder">
+
+            <div class="recent-products-grid__image-wrapper">
+
+              {% cycle
+                'product-1',
+                'product-2',
+                'product-3',
+                'product-4'
+                as placeholder
+              %}
+
+              {{ placeholder | placeholder_svg_tag: 'recent-products-grid__placeholder' }}
+
+            </div>
+
+            <div class="recent-products-grid__info">
+
+              <div class="recent-products-grid__product-title">
+                {% case i %}
+                  {% when 1 %}
+                    Indicador de nivel de aceite para compresor
+                  {% when 2 %}
+                    Motor PM para compresor 20 bar
+                  {% when 3 %}
+                    Indicador de nivel de aceite industrial
+                  {% when 4 %}
+                    Motor PM para compresor industrial
+                {% endcase %}
+              </div>
+
+              <div class="recent-products-grid__price">
+                <span class="recent-products-grid__price-current">
+                  {% case i %}
+                    {% when 1 %}
+                      $1,428.00 MXN
+                    {% when 2 %}
+                      $29,580.00 MXN
+                    {% when 3 %}
+                      $1,428.00 MXN
+                    {% when 4 %}
+                      $29,580.00 MXN
+                  {% endcase %}
+                </span>
+              </div>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #{{ section_id }} {
+    --section-background: {{ section.settings.background_color }};
+
+    --heading-color: {{ section.settings.heading_color }};
+    --heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+    --heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+
+    --product-title-color: {{ section.settings.product_title_color }};
+    --product-price-color: {{ section.settings.product_price_color }};
+    --compare-price-color: {{ section.settings.compare_price_color }};
+
+    --card-background: {{ section.settings.card_background }};
+    --image-background: {{ section.settings.image_background }};
+
+    --card-radius: {{ section.settings.card_radius }}px;
+    --image-radius: {{ section.settings.image_radius }}px;
+
+    --container-width: {{ section.settings.container_width }}px;
+
+    --grid-column-gap: {{ section.settings.column_gap }}px;
+    --grid-row-gap: {{ section.settings.row_gap }}px;
+
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+
+    --section-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+
+    --section-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --section-padding-horizontal-mobile: {{ section.settings.padding_horizontal_mobile }}px;
+
+    width: 100%;
+
+    background: var(--section-background);
+
+    padding:
+      var(--section-padding-top)
+      var(--section-padding-horizontal)
+      var(--section-padding-bottom);
+  }
+
+  #{{ section_id }} * {
+    box-sizing: border-box;
+  }
+
+  #{{ section_id }} .recent-products-grid__container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+
+
+  /* ========================================
+     HEADING
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__heading {
+    margin: 0 0 {{ section.settings.heading_bottom_spacing }}px;
+
+    color: var(--heading-color);
+
+    font-size: var(--heading-size-desktop);
+
+    font-weight: {{ section.settings.heading_weight }};
+
+    line-height: {{ section.settings.heading_line_height | divided_by: 100.0 }};
+
+    letter-spacing: {{ section.settings.heading_letter_spacing }}px;
+
+    text-align: {{ section.settings.heading_alignment }};
+  }
+
+
+  /* ========================================
+     GRID
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        {{ section.settings.columns_desktop }},
+        minmax(0, 1fr)
+      );
+
+    gap:
+      var(--grid-row-gap)
+      var(--grid-column-gap);
+  }
+
+
+  /* ========================================
+     CARD
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    border-radius: var(--card-radius);
+
+    background: var(--card-background);
+  }
+
+
+  /* ========================================
+     IMAGE
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__image-link {
+    display: block;
+
+    text-decoration: none;
+  }
+
+  #{{ section_id }} .recent-products-grid__image-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    aspect-ratio: {{ section.settings.image_ratio }};
+
+    overflow: hidden;
+
+    border-radius: var(--image-radius);
+
+    background: var(--image-background);
+  }
+
+  #{{ section_id }} .recent-products-grid__image,
+  #{{ section_id }} .recent-products-grid__placeholder {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: {{ section.settings.image_fit }};
+
+    transition: transform 0.3s ease;
+  }
+
+  #{{ section_id }} .recent-products-grid__image {
+    padding: {{ section.settings.image_padding }}px;
+  }
+
+  #{{ section_id }} .recent-products-grid__card:hover
+  .recent-products-grid__image {
+    transform: scale(1.03);
+  }
+
+
+  /* ========================================
+     INFO
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__info {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    padding:
+      {{ section.settings.card_padding_vertical }}px
+      {{ section.settings.card_padding_horizontal }}px;
+  }
+
+
+  /* ========================================
+     PRODUCT TITLE
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__product-title {
+    display: block;
+
+    margin: 0;
+
+    color: var(--product-title-color);
+
+    font-size: {{ section.settings.product_title_size }}px;
+
+    font-weight: {{ section.settings.product_title_weight }};
+
+    line-height: 1.35;
+
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+  }
+
+  #{{ section_id }} a.recent-products-grid__product-title:hover {
+    opacity: 0.7;
+  }
+
+
+  /* ========================================
+     PRICE
+     ======================================== */
+
+  #{{ section_id }} .recent-products-grid__price {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: {{ section.settings.price_top_spacing }}px;
+  }
+
+  #{{ section_id }} .recent-products-grid__price-current {
+    color: var(--product-price-color);
+
+    font-size: {{ section.settings.price_size }}px;
+
+    font-weight: {{ section.settings.price_weight }};
+  }
+
+  #{{ section_id }} .recent-products-grid__price-compare {
+    color: var(--compare-price-color);
+
+    font-size: {{ section.settings.compare_price_size }}px;
+
+    text-decoration: line-through;
+  }
+
+
+  /* ========================================
+     TABLET
+     ======================================== */
+
+  @media screen and (max-width: 989px) {
+
+    #{{ section_id }} .recent-products-grid__grid {
+      grid-template-columns:
+        repeat(
+          {{ section.settings.columns_tablet }},
+          minmax(0, 1fr)
+        );
+    }
+
+  }
+
+
+  /* ========================================
+     MOBILE
+     ======================================== */
+
+  @media screen and (max-width: 749px) {
+
+    #{{ section_id }} {
+      padding:
+        var(--section-padding-top-mobile)
+        var(--section-padding-horizontal-mobile)
+        var(--section-padding-bottom-mobile);
+    }
+
+    #{{ section_id }} .recent-products-grid__heading {
+      font-size: var(--heading-size-mobile);
+    }
+
+    #{{ section_id }} .recent-products-grid__grid {
+      grid-template-columns:
+        repeat(
+          {{ section.settings.columns_mobile }},
+          minmax(0, 1fr)
+        );
+
+      column-gap: {{ section.settings.column_gap_mobile }}px;
+      row-gap: {{ section.settings.row_gap_mobile }}px;
+    }
+
+    #{{ section_id }} .recent-products-grid__product-title {
+      font-size: {{ section.settings.product_title_size_mobile }}px;
+    }
+
+    #{{ section_id }} .recent-products-grid__price-current {
+      font-size: {{ section.settings.price_size_mobile }}px;
+    }
+
+    #{{ section_id }} .recent-products-grid__info {
+      padding:
+        {{ section.settings.card_padding_vertical_mobile }}px
+        {{ section.settings.card_padding_horizontal_mobile }}px;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Productos por colección",
+  "tag": "section",
+  "class": "section-recent-products-grid",
+
+  "settings": [
+
+    {
+      "type": "header",
+      "content": "Contenido"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Productos recientemente vistos"
+    },
+
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Tag HTML del título",
+      "default": "h2",
+      "info": "Selecciona la jerarquía semántica del título.",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "p",
+          "label": "Párrafo"
+        },
+        {
+          "value": "div",
+          "label": "DIV"
+        }
+      ]
+    },
+
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección"
+    },
+
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Productos a mostrar",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+
+
+    {
+      "type": "header",
+      "content": "Fondo"
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fondo de la sección",
+      "default": "#FFFFFF"
+    },
+
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Fondo de tarjeta",
+      "default": "#FFFFFF"
+    },
+
+    {
+      "type": "color",
+      "id": "image_background",
+      "label": "Fondo de imagen",
+      "default": "#EEEEEE"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Título de sección"
+    },
+
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#174E96"
+    },
+
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Tamaño desktop",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 26
+    },
+
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Tamaño mobile",
+      "min": 16,
+      "max": 42,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Peso",
+      "default": "700",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "min": 90,
+      "max": 180,
+      "step": 5,
+      "unit": "%",
+      "default": 120
+    },
+
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "min": -3,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alineación",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "center",
+          "label": "Centro"
+        },
+        {
+          "value": "right",
+          "label": "Derecha"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "heading_bottom_spacing",
+      "label": "Espacio debajo del título",
+      "min": 10,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+
+
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columnas desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columnas tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columnas mobile",
+      "default": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Separación horizontal",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+
+    {
+      "type": "range",
+      "id": "row_gap",
+      "label": "Separación vertical",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "Separación horizontal mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "range",
+      "id": "row_gap_mobile",
+      "label": "Separación vertical mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+
+
+    {
+      "type": "header",
+      "content": "Imagen"
+    },
+
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Proporción",
+      "default": "1 / 1.25",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Cuadrada"
+        },
+        {
+          "value": "1 / 1.25",
+          "label": "Vertical"
+        },
+        {
+          "value": "4 / 5",
+          "label": "4:5"
+        },
+        {
+          "value": "3 / 4",
+          "label": "3:4"
+        }
+      ]
+    },
+
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Ajuste de imagen",
+      "default": "contain",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "image_padding",
+      "label": "Padding interno imagen",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Border radius imagen",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Border radius tarjeta",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+
+
+    {
+      "type": "header",
+      "content": "Nombre del producto"
+    },
+
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Color",
+      "default": "#111111"
+    },
+
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "label": "Tamaño desktop",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+
+    {
+      "type": "range",
+      "id": "product_title_size_mobile",
+      "label": "Tamaño mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "select",
+      "id": "product_title_weight",
+      "label": "Peso",
+      "default": "400",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+
+
+    {
+      "type": "header",
+      "content": "Precio"
+    },
+
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Color precio",
+      "default": "#174E96"
+    },
+
+    {
+      "type": "color",
+      "id": "compare_price_color",
+      "label": "Color compare at price",
+      "default": "#777777"
+    },
+
+    {
+      "type": "range",
+      "id": "price_size",
+      "label": "Tamaño precio desktop",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+
+    {
+      "type": "range",
+      "id": "price_size_mobile",
+      "label": "Tamaño precio mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+
+    {
+      "type": "range",
+      "id": "compare_price_size",
+      "label": "Tamaño precio anterior",
+      "min": 9,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+
+    {
+      "type": "select",
+      "id": "price_weight",
+      "label": "Peso",
+      "default": "600",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
+      "id": "price_top_spacing",
+      "label": "Espacio antes del precio",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+
+
+    {
+      "type": "header",
+      "content": "Padding tarjeta"
+    },
+
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "label": "Vertical desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+
+    {
+      "type": "range",
+      "id": "card_padding_horizontal",
+      "label": "Horizontal desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+
+    {
+      "type": "range",
+      "id": "card_padding_vertical_mobile",
+      "label": "Vertical mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+
+    {
+      "type": "range",
+      "id": "card_padding_horizontal_mobile",
+      "label": "Horizontal mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+
+
+    {
+      "type": "header",
+      "content": "Contenedor"
+    },
+
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Ancho máximo",
+      "min": 800,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding superior desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding inferior desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding superior mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 30
+    },
+
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding inferior mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 30
+    },
+
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Padding horizontal mobile",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Productos por colección"
+    }
+  ]
+}
+{% endschema %}
