@@ -23,7 +23,7 @@
             "text_alignment": "center",
             "content_max_width": 700,
             "heading": "Refacciones y consumibles para maquinaria.",
-            "heading_tag": "h2",
+            "heading_tag": "h1",
             "heading_color": "#FFFFFF",
             "heading_size_desktop": 42,
             "heading_size_mobile": 32,
@@ -70,7 +70,55 @@
           "type": "_popular-category-card",
           "settings": {
             "collection": "",
-            "title": "Filtros"
+            "title": "Cortadoras y grabadoras láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_QDEb7b": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Soldadoras y limpiadoras láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_H78CD8": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Insumos para corte láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_cVHbDp": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Insumos para soldadura láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_yphnRr": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Cortadoras y grabadoras láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_XBCmCY": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Fuentes y cabezales láser"
+          },
+          "blocks": {}
+        },
+        "popular_category_card_mCn7Jr": {
+          "type": "_popular-category-card",
+          "settings": {
+            "collection": "",
+            "title": "Transformadores, reguladores y chillers"
           },
           "blocks": {}
         },
@@ -78,29 +126,35 @@
           "type": "_popular-category-card",
           "settings": {
             "collection": "",
-            "title": "Insumos"
+            "title": "Filtros para compresores"
           },
           "blocks": {}
         }
       },
       "block_order": [
         "card_1",
+        "popular_category_card_QDEb7b",
+        "popular_category_card_H78CD8",
+        "popular_category_card_cVHbDp",
+        "popular_category_card_yphnRr",
+        "popular_category_card_XBCmCY",
+        "popular_category_card_mCn7Jr",
         "card_2"
       ],
       "settings": {
         "heading": "Categorías populares",
-        "heading_tag": "h2",
-        "heading_color": "",
+        "heading_tag": "h3",
+        "heading_color": "#174895",
         "button_label": "Ver todos los productos",
         "button_link": "",
-        "button_font": "accent",
-        "button_background_color": "",
-        "button_text_color": "",
+        "button_font": "body",
+        "button_background_color": "#F0AF0B",
+        "button_text_color": "{{ settings.color_palette.foreground }}",
         "button_hover_background_color": "",
         "columns_desktop": 4,
         "columns_mobile": "2",
         "image_ratio": "1 / 1",
-        "image_radius": 0,
+        "image_radius": 16,
         "gap": 16,
         "section_width": "page-width",
         "padding-block-start": 48,
