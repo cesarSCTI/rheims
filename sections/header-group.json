@@ -113,7 +113,7 @@
                 "link_manipuladores_consumibles": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "soldadura-laser-consumibles",
                     "title": "Consumibles"
                   },
                   "blocks": {}
