@@ -102,17 +102,13 @@
 
             <div class="recent-products-grid__image-wrapper">
 
-              {% cycle
-                'product-1',
-                'product-2',
-                'product-3',
-                'product-4'
-                as placeholder
-              %}
+  {% capture placeholder %}
+    {% cycle 'product-1', 'product-2', 'product-3', 'product-4' %}
+  {% endcapture %}
 
-              {{ placeholder | placeholder_svg_tag: 'recent-products-grid__placeholder' }}
+  {{ placeholder | strip | placeholder_svg_tag: 'recent-products-grid__placeholder' }}
 
-            </div>
+</div>
 
             <div class="recent-products-grid__info">
 
@@ -1098,7 +1094,7 @@
       "label": "Padding superior mobile",
       "min": 0,
       "max": 120,
-      "step": 4,
+      "step": 5,
       "unit": "px",
       "default": 30
     },
@@ -1109,7 +1105,7 @@
       "label": "Padding inferior mobile",
       "min": 0,
       "max": 120,
-      "step": 4,
+      "step": 5,
       "unit": "px",
       "default": 30
     },
