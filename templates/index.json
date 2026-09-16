@@ -16,7 +16,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/4bb1e0b6ba94c1e472d338e3c237a13fcf1fbeab.jpg",
-            "overlay_color": "#003D7A",
+            "overlay_color": "#003d7a",
             "overlay_opacity": 50,
             "horizontal_alignment": "center",
             "vertical_alignment": "center",
@@ -24,19 +24,19 @@
             "content_max_width": 700,
             "heading": "Refacciones y consumibles para maquinaria.",
             "heading_tag": "h1",
-            "heading_color": "#FFFFFF",
+            "heading_color": "#ffffff",
             "heading_size_desktop": 42,
             "heading_size_mobile": 32,
             "heading_weight": "700",
             "subtitle": "Insumos para equipo láser, dobladoras, CNC routers y más.",
-            "subtitle_color": "#FFFFFF",
+            "subtitle_color": "#ffffff",
             "subtitle_size_desktop": 18,
             "subtitle_size_mobile": 16,
             "button_label": "Ver todos los productos",
             "button_link": "shopify://collections/all",
-            "button_background": "#FFC400",
+            "button_background": "#ffc400",
             "button_text_color": "#000000",
-            "button_background_hover": "#FFFFFF",
+            "button_background_hover": "#ffffff",
             "button_text_color_hover": "#000000",
             "button_radius": 10
           }
@@ -57,10 +57,10 @@
         "padding_vertical_desktop": 40,
         "padding_horizontal_mobile": 20,
         "padding_vertical_mobile": 30,
-        "arrow_background": "#FFFFFF",
+        "arrow_background": "#ffffff",
         "arrow_color": "#111111",
-        "dot_color": "#FFFFFF",
-        "dot_active_color": "#FFC400"
+        "dot_color": "#ffffff",
+        "dot_active_color": "#ffc400"
       }
     },
     "popular_categories_test": {
@@ -151,7 +151,7 @@
         "button_label": "Ver todos los productos",
         "button_link": "",
         "button_font": "body",
-        "button_background_color": "#F0AF0B",
+        "button_background_color": "#f0af0b",
         "button_text_color": "{{ settings.color_palette.foreground }}",
         "button_hover_background_color": "",
         "columns_desktop": 4,
@@ -164,209 +164,115 @@
         "padding-block-end": 48
       }
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "features_grid_ejMXmk": {
+      "type": "features-grid",
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "feature_RknXtR": {
+          "type": "feature",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "button-unstyled",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "link_text_color": "",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "icon_size_desktop": 24,
+            "icon_size_mobile": 24,
+            "icon_background": "#FFB900",
+            "icon_background_size": 54,
+            "icon_background_size_mobile": 54,
+            "icon_radius": 50,
+            "heading": "Soporte rápido y amable",
+            "heading_tag": "h3",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 18,
+            "heading_size_mobile": 18,
+            "heading_weight": "500",
+            "text": "<p>Nuestro equipo responde rápidamente y de manera amable para brindarte una excelente experiencia.</p>",
+            "text_color": "#B9CCE7",
+            "text_size_desktop": 13,
+            "text_size_mobile": 14
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "feature_Tz9wda": {
+          "type": "feature",
           "settings": {
-            "product_card_gap": 4,
-            "background_color": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_color": "",
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "text_color": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "icon_size_desktop": 24,
+            "icon_size_mobile": 24,
+            "icon_background": "#FFB900",
+            "icon_background_size": 54,
+            "icon_background_size_mobile": 54,
+            "icon_radius": 50,
+            "heading": "Soporte rápido y amable",
+            "heading_tag": "h3",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 18,
+            "heading_size_mobile": 18,
+            "heading_weight": "500",
+            "text": "<p>Nuestro equipo responde rápidamente y de manera amable para brindarte una excelente experiencia.</p>",
+            "text_color": "#B9CCE7",
+            "text_size_desktop": 13,
+            "text_size_mobile": 14
+          }
+        },
+        "feature_xgewCL": {
+          "type": "feature",
+          "settings": {
+            "icon_size_desktop": 24,
+            "icon_size_mobile": 24,
+            "icon_background": "#FFB900",
+            "icon_background_size": 54,
+            "icon_background_size_mobile": 54,
+            "icon_radius": 50,
+            "heading": "Soporte rápido y amable",
+            "heading_tag": "h3",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 18,
+            "heading_size_mobile": 18,
+            "heading_weight": "500",
+            "text": "<p>Nuestro equipo responde rápidamente y de manera amable para brindarte una excelente experiencia.</p>",
+            "text_color": "#B9CCE7",
+            "text_size_desktop": 13,
+            "text_size_mobile": 14
+          }
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": [
+        "feature_RknXtR",
+        "feature_Tz9wda",
+        "feature_xgewCL"
+      ],
+      "name": "Grid de beneficios",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "background_color": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "background_color": "#184F96",
+        "container_width": 1400,
+        "heading": "Ofrecemos experiencias excepcionales a nuestros clientes.",
+        "heading_tag": "h2",
+        "heading_color": "#FFFFFF",
+        "heading_size_desktop": 40,
+        "heading_size_mobile": 30,
+        "heading_max_width": 700,
+        "heading_weight": "400",
+        "heading_line_height": 110,
+        "heading_letter_spacing": 0,
+        "heading_alignment": "center",
+        "columns_desktop": 3,
+        "column_gap": 56,
+        "row_gap": 40,
+        "row_gap_mobile": 40,
+        "item_alignment": "flex-start",
+        "text_alignment": "left",
+        "item_alignment_mobile": "center",
+        "text_alignment_mobile": "center",
+        "heading_bottom_spacing": 60,
+        "icon_bottom_spacing": 18,
+        "text_top_spacing": 10,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "horizontal_padding": 35,
+        "padding_top_mobile": 45,
+        "padding_bottom_mobile": 45,
+        "horizontal_padding_mobile": 20
       }
     }
   },
   "order": [
     "custom_hero_slider_WzUKfm",
     "popular_categories_test",
-    "product_list_fa6P9H"
+    "features_grid_ejMXmk"
   ]
 }
