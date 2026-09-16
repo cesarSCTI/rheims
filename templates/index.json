@@ -170,27 +170,7 @@
         "feature_RknXtR": {
           "type": "feature",
           "settings": {
-            "icon_size_desktop": 24,
-            "icon_size_mobile": 24,
-            "icon_background": "#ffb900",
-            "icon_background_size": 54,
-            "icon_background_size_mobile": 54,
-            "icon_radius": 50,
-            "heading": "Soporte rápido y amable",
-            "heading_tag": "h3",
-            "heading_color": "#ffffff",
-            "heading_size_desktop": 18,
-            "heading_size_mobile": 18,
-            "heading_weight": "500",
-            "text": "<p>Nuestro equipo responde rápidamente y de manera amable para brindarte una excelente experiencia.</p>",
-            "text_color": "#b9cce7",
-            "text_size_desktop": 13,
-            "text_size_mobile": 14
-          }
-        },
-        "feature_Tz9wda": {
-          "type": "feature",
-          "settings": {
+            "icon": "shopify://shop_images/like-tag.png",
             "icon_size_desktop": 24,
             "icon_size_mobile": 24,
             "icon_background": "#ffb900",
@@ -212,6 +192,29 @@
         "feature_xgewCL": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/frame.png",
+            "icon_size_desktop": 24,
+            "icon_size_mobile": 24,
+            "icon_background": "#ffb900",
+            "icon_background_size": 54,
+            "icon_background_size_mobile": 54,
+            "icon_radius": 50,
+            "heading": "Soporte rápido y amable",
+            "heading_tag": "h3",
+            "heading_color": "#ffffff",
+            "heading_size_desktop": 18,
+            "heading_size_mobile": 18,
+            "heading_weight": "500",
+            "text": "<p>Nuestro equipo responde rápidamente y de manera amable para brindarte una excelente experiencia.</p>",
+            "text_color": "#b9cce7",
+            "text_size_desktop": 13,
+            "text_size_mobile": 14
+          }
+        },
+        "feature_Tz9wda": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/profile-2user.png",
             "icon_size_desktop": 24,
             "icon_size_mobile": 24,
             "icon_background": "#ffb900",
@@ -233,8 +236,8 @@
       },
       "block_order": [
         "feature_RknXtR",
-        "feature_Tz9wda",
-        "feature_xgewCL"
+        "feature_xgewCL",
+        "feature_Tz9wda"
       ],
       "name": "Grid de beneficios",
       "settings": {
