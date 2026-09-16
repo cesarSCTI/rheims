@@ -141,6 +141,9 @@
         "popular_category_card_mCn7Jr",
         "card_2"
       ],
+      "custom_css": [
+        ".popular-category-card__image-wrap {background-color: transparent;}"
+      ],
       "settings": {
         "heading": "Categorías populares",
         "heading_tag": "h3",
