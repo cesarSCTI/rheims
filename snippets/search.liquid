@@ -95,20 +95,28 @@
   /* "Bar" style: looks like a wide input, still just opens the search modal */
   .search-action--bar {
     width: 100%;
+    max-width: 32rem;
     margin-inline: 0;
   }
 
   .search-action__bar-button {
     width: 100%;
     justify-content: flex-start;
-    gap: var(--gap-xs);
-    color: var(--color-foreground-muted, var(--color-foreground));
+    align-items: center;
+    gap: 10px;
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-muted-text, 0.6));
 
     @media screen and (min-width: 750px) {
-      padding: var(--padding-sm) var(--padding-md);
+      padding: 10px 16px;
       border: var(--search-border-width) solid var(--color-border);
       border-radius: var(--search-border-radius);
       background-color: var(--color-background);
+    }
+
+    .svg-wrapper {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -117,5 +125,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: left;
   }
 {% endstylesheet %}
