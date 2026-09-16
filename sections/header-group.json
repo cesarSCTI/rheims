@@ -133,7 +133,7 @@
                 "link_corte_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "soldadura-laser-componentes-vitales",
                     "title": "Componentes vitales"
                   },
                   "blocks": {}
@@ -141,7 +141,7 @@
                 "link_corte_consumibles": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "corte-laser-consumibles",
                     "title": "Consumibles"
                   },
                   "blocks": {}
@@ -149,7 +149,7 @@
                 "link_corte_herramientas_limpieza": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "corte-laser-herramientas-de-limpieza",
                     "title": "Herramientas de limpieza"
                   },
                   "blocks": {}
@@ -157,7 +157,7 @@
                 "link_corte_refacciones": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "soldadura-laser-refacciones",
                     "title": "Refacciones"
                   },
                   "blocks": {}
@@ -165,7 +165,7 @@
                 "link_corte_perifericos": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "soldadura-laser-perifericos",
                     "title": "Periféricos"
                   },
                   "blocks": {}
@@ -173,7 +173,7 @@
                 "link_corte_software": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "corte-laser-software",
                     "title": "Software"
                   },
                   "blocks": {}
@@ -198,7 +198,7 @@
                 "link_soldadura_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "soldadura-laser-componentes-vitales",
                     "title": "Componentes vitales"
                   },
                   "blocks": {}
