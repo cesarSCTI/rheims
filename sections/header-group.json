@@ -23,7 +23,8 @@
             "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
-            "case": "none"
+            "case": "none",
+            "text_color": ""
           },
           "blocks": {}
         }
@@ -35,10 +36,11 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
+        "background_color": "",
         "divider_width": 1,
+        "divider_color": "{{ settings.color_palette.color3 }}",
         "padding-block-start": 15,
-        "padding-block-end": 15,
-        "divider_color": "{{ settings.color_palette.color3 }}"
+        "padding-block-end": 15
       }
     },
     "header_section": {
@@ -58,45 +60,54 @@
           "type": "_header-categories",
           "static": true,
           "settings": {
-            "trigger_label": "Categorías"
+            "trigger_label": "Categorías",
+            "background_color": "",
+            "text_color": ""
           },
           "blocks": {
             "group_compresores": {
               "type": "_category-group",
               "settings": {
                 "title": "Compresores",
-                "open_by_default": false
+                "open_by_default": true
               },
               "blocks": {
                 "link_compresores_filtros": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "compresores-filtros",
                     "title": "Filtros"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_compresores_insumos": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "compresores-insumos",
                     "title": "Insumos"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_compresores_refacciones": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "",
+                    "collection": "compresores-refacciones",
                     "title": "Refacciones"
-                  }
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": ["link_compresores_filtros", "link_compresores_insumos", "link_compresores_refacciones"]
+              "block_order": [
+                "link_compresores_filtros",
+                "link_compresores_insumos",
+                "link_compresores_refacciones"
+              ]
             },
             "group_manipuladores": {
               "type": "_category-group",
               "settings": {
                 "title": "Manipuladores de lámina",
-                "open_by_default": false
+                "open_by_default": true
               },
               "blocks": {
                 "link_manipuladores_consumibles": {
@@ -104,10 +115,13 @@
                   "settings": {
                     "collection": "",
                     "title": "Consumibles"
-                  }
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": ["link_manipuladores_consumibles"]
+              "block_order": [
+                "link_manipuladores_consumibles"
+              ]
             },
             "group_corte_laser": {
               "type": "_category-group",
@@ -121,42 +135,48 @@
                   "settings": {
                     "collection": "",
                     "title": "Componentes vitales"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_corte_consumibles": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Consumibles"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_corte_herramientas_limpieza": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Herramientas de limpieza"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_corte_refacciones": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Refacciones"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_corte_perifericos": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Periféricos"
-                  }
+                  },
+                  "blocks": {}
                 },
                 "link_corte_software": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Software"
-                  }
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
@@ -172,7 +192,7 @@
               "type": "_category-group",
               "settings": {
                 "title": "Soldadura láser",
-                "open_by_default": false
+                "open_by_default": true
               },
               "blocks": {
                 "link_soldadura_componentes_vitales": {
@@ -180,10 +200,13 @@
                   "settings": {
                     "collection": "",
                     "title": "Componentes vitales"
-                  }
+                  },
+                  "blocks": {}
                 }
               },
-              "block_order": ["link_soldadura_componentes_vitales"]
+              "block_order": [
+                "link_soldadura_componentes_vitales"
+              ]
             }
           },
           "block_order": [
@@ -198,6 +221,7 @@
         "logo_position": "left",
         "menu_position": "left",
         "menu_row": "top",
+        "customer_account_menu": "customer-account-main-menu",
         "show_search": true,
         "search_position": "center",
         "search_bar_style": "bar",
@@ -215,10 +239,29 @@
         "enable_sticky_header": "always",
         "divider_width": 0,
         "divider_size": "page-width",
+        "divider_color": "",
         "border_width": 0,
+        "bottom_border_color": "",
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
+        "background_color_top": "",
+        "text_color_top": "",
+        "background_color_bottom": "",
+        "text_color_bottom": "",
+        "bubble_style": "default",
+        "bubble_background_color": "",
+        "bubble_text_color": "",
         "enable_transparent_header_home": false,
+        "home_inverse_logo": false,
+        "text_color_transparent_home": "",
         "enable_transparent_header_product": false,
-        "enable_transparent_header_collection": false
+        "product_inverse_logo": false,
+        "text_color_transparent_product": "",
+        "enable_transparent_header_collection": false,
+        "collection_inverse_logo": false,
+        "text_color_transparent_collection": ""
       }
     }
   },
