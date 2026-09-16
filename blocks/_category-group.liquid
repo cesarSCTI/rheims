@@ -1,0 +1,103 @@
+{%- doc -%}
+  Renders one collapsible category group (the "blue heading" rows in the
+  categories drawer, e.g. "Compresores"). Holds up to 10 `_category-link`
+  child blocks.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+%}
+
+{% capture details_markup %}
+  <details
+    class="details categories-drawer__group"
+    {% if block_settings.open_by_default %}
+      open
+    {% endif %}
+  >
+    <summary class="details__header categories-drawer__group-summary">
+      <span class="categories-drawer__group-title">{{ block_settings.title | default: 'Category' }}</span>
+      <span class="svg-wrapper icon-caret icon-animated">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <ul
+      class="details-content categories-drawer__link-list list-unstyled"
+      role="list"
+    >
+      {% content_for 'blocks' %}
+    </ul>
+  </details>
+{% endcapture %}
+
+<li
+  class="categories-drawer__group-item"
+  {{ block.shopify_attributes }}
+>
+  {% render 'accordion-custom-component',
+    children: details_markup,
+    open_by_default_on_desktop: block_settings.open_by_default,
+    open_by_default_on_mobile: block_settings.open_by_default
+  %}
+</li>
+
+{% render 'accordion-styles' %}
+
+{% stylesheet %}
+  .categories-drawer__group-item {
+    list-style: none;
+    border-block-end: var(--style-border-width, 1px) solid var(--color-border);
+  }
+
+  .categories-drawer__group-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    padding-block: var(--padding-md);
+    min-height: var(--minimum-touch-target);
+  }
+
+  .categories-drawer__group-title {
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--md);
+    color: var(--color-primary-button-background, var(--color-foreground));
+  }
+
+  .categories-drawer__link-list {
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 0;
+    padding-block-end: var(--padding-sm);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.category_group",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_category-link"
+    }
+  ],
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "t:settings.open_by_default",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

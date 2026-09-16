@@ -1,0 +1,255 @@
+{%- doc -%}
+  Renders the "Categories" drawer trigger button + sliding panel.
+
+  Unlike `_header-menu`, the content isn't sourced from a Shopify navigation
+  menu: merchants build it directly as nested blocks in the theme editor —
+  `_category-group` (the collapsible heading rows) each holding up to 10
+  `_category-link` blocks. The trigger + panel are shown at every breakpoint
+  (no separate desktop mega-menu presentation).
+
+  @example
+  {% content_for 'block', type: '_header-categories', id: 'header-categories' %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign trigger_label = block_settings.trigger_label | default: 'Categories'
+  assign nav_label = trigger_label
+  if nav_label == blank
+    assign nav_label = 'accessibility.menu' | t
+  endif
+
+  render 'contrast-override', background_color: block_settings.background_color, text_color: block_settings.text_color, section_id: block.id
+%}
+
+{% render 'summary-icon-styles' %}
+{% render 'accordion-styles' %}
+
+<script
+  src="{{ 'header-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+<header-drawer
+  class="header__categories-trigger"
+  {{ block.shopify_attributes }}
+>
+  <details
+    id="Details-categories-drawer-{{ block.id }}"
+    class="categories-drawer-container"
+    ref="details"
+    scroll-lock
+  >
+    <summary
+      class="header__icon header__icon--menu header__icon--summary categories-drawer__trigger"
+      aria-label="{{ 'accessibility.menu' | t }}"
+      on:click="/toggle"
+    >
+      <span class="svg-wrapper header-drawer-icon header-drawer-icon--open">
+        {{- 'icon-menu.svg' | inline_asset_content -}}
+      </span>
+      <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+        {{- 'icon-close-menu.svg' | inline_asset_content -}}
+      </span>
+      {% if trigger_label != blank %}
+        <span class="categories-drawer__trigger-label">{{ trigger_label }}</span>
+      {% endif %}
+    </summary>
+
+    <div
+      ref="menuDrawer"
+      class="menu-drawer categories-drawer{% if block_settings.background_color != blank or block_settings.text_color != blank %} color-custom-{{ block.id }}{% endif %}"
+    >
+      <button
+        class="button close-button menu-drawer__close-button focus-inset"
+        type="button"
+        aria-label="{{ 'actions.close' | t }}"
+        on:click="/close"
+      >
+        <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+          {{- 'icon-close-menu.svg' | inline_asset_content -}}
+        </span>
+      </button>
+
+      <nav
+        class="menu-drawer__navigation categories-drawer__navigation"
+        aria-label="{{ nav_label }}"
+      >
+        <ul
+          class="categories-drawer__list list-unstyled"
+          role="list"
+        >
+          {% content_for 'blocks' %}
+        </ul>
+      </nav>
+    </div>
+
+    <div
+      class="menu-drawer__backdrop"
+      on:click="/close"
+    ></div>
+  </details>
+</header-drawer>
+
+{% stylesheet %}
+  /* ------- Trigger button ------- */
+  .header__categories-trigger {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+
+  .categories-drawer__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-2xs);
+    color: var(--color-foreground);
+    padding-inline: var(--padding-sm);
+  }
+
+  .categories-drawer__trigger .header-drawer-icon {
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+  }
+
+  .categories-drawer__trigger-label {
+    font-size: var(--font-size--sm);
+    font-weight: var(--font-heading--weight);
+    white-space: nowrap;
+
+    @media screen and (max-width: 749px) {
+      display: none;
+    }
+  }
+
+  details:not(.menu-open) .categories-drawer__trigger .header-drawer-icon--close {
+    display: none;
+  }
+
+  details.menu-open .categories-drawer__trigger .header-drawer-icon--close {
+    @media screen and (min-width: 750px) {
+      display: none;
+    }
+  }
+
+  details.menu-open .categories-drawer__trigger .header-drawer-icon--open {
+    display: none;
+
+    @media screen and (min-width: 750px) {
+      display: flex;
+    }
+  }
+
+  /* ------- Sliding panel (copied shell from header-drawer.liquid: that
+     snippet is no longer rendered by this header, so its styles aren't
+     emitted on this page) ------- */
+  .categories-drawer.menu-drawer {
+    position: fixed;
+    transform: translateX(-100%);
+    visibility: hidden;
+    height: var(--drawer-height);
+    width: var(--drawer-width);
+    max-width: var(--drawer-max-width);
+    z-index: var(--layer-menu-drawer);
+    left: 0;
+    top: 0;
+    padding: var(--safe-area-inset-top) 0 var(--safe-area-inset-bottom)
+      max(0px, calc(var(--safe-area-inset-left) - var(--drawer-padding)));
+    background-color: var(--color-background);
+    overflow: auto;
+    display: flex;
+    border-right: var(--style-border-drawer);
+    flex-direction: column;
+    transition: transform var(--drawer-animation-speed) ease, visibility var(--drawer-animation-speed) ease,
+      opacity var(--drawer-animation-speed) ease;
+
+    @media screen and (min-width: 750px) {
+      width: 25rem;
+    }
+  }
+
+  .menu-open > .categories-drawer.menu-drawer {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .categories-drawer-container .menu-drawer__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    backdrop-filter: brightness(0.75);
+    z-index: var(--layer-overlay);
+    opacity: 0;
+    transition: opacity var(--drawer-animation-speed) ease;
+  }
+
+  .menu-open .menu-drawer__backdrop {
+    opacity: 1;
+  }
+
+  .categories-drawer__navigation {
+    padding: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    @media screen and (min-width: 750px) {
+      margin-top: var(--drawer-header-desktop-top);
+    }
+  }
+
+  .categories-drawer__list {
+    padding-inline: var(--drawer-padding);
+    margin: 0;
+  }
+
+  .categories-drawer.menu-drawer .menu-drawer__close-button {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: fit-content;
+    height: fit-content;
+    color: inherit;
+    padding: var(--padding-lg);
+    align-self: flex-end;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.header_categories",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_category-group"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "trigger_label",
+      "label": "t:settings.trigger_label",
+      "default": "Categories"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:settings.background_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:settings.text_color",
+      "placeholder": "t:settings.default"
+    }
+  ]
+}
+{% endschema %}

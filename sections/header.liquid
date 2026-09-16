@@ -83,21 +83,16 @@
   endcapture
 
   capture menu
-    content_for 'block', type: '_header-menu', id: 'header-menu'
+    content_for 'block', type: '_header-categories', id: 'header-categories'
   endcapture
 
-  capture drawer_menu
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'mobile'
-  endcapture
+  # The categories drawer (_header-categories) is shown at every breakpoint by
+  # design, so there's no separate mobile-only trigger to render into `first`.
+  assign drawer_menu = ''
 
-  capture navigation_bar
-    content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
-  endcapture
-
+  # The categories drawer has no separate mobile navigation-bar presentation,
+  # so there's nothing to render here (kept as `false` for the check below).
   assign has_navigation_bar = false
-  if navigation_bar contains 'data-navigation-bar-enabled'
-    assign has_navigation_bar = true
-  endif
 
   capture actions
     render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section
@@ -132,7 +127,12 @@
     endif
   endif
   capture search
-    render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style
+    render 'search',
+      style: search_style,
+      class: search_class,
+      display_style: section.settings.actions_display_style,
+      bar_style: section.settings.search_bar_style,
+      placeholder: section.settings.search_placeholder
   endcapture
 
   # Skip drawer search under specific conditions:
@@ -855,6 +855,13 @@
       --header-right: minmax(max-content, 1fr);
     }
 
+    /* Let a "bar" style search input stretch to fill the center column */
+    &:has(.header__column--center .search-action--bar) {
+      --header-center: 1fr;
+      --header-left: minmax(max-content, 1fr);
+      --header-right: minmax(max-content, 1fr);
+    }
+
     /* If there is no center column, make the column the menu is in grow eagerly */
     &:where(:not(:has(.header__column--center))) {
       @media screen and (min-width: 750px) {
@@ -1345,12 +1352,39 @@
           "label": "t:options.left"
         },
         {
+          "value": "center",
+          "label": "t:options.center"
+        },
+        {
           "value": "right",
           "label": "t:options.right"
         }
       ],
       "default": "right",
       "visible_if": "{{ section.settings.show_search }}"
+    },
+    {
+      "type": "select",
+      "id": "search_bar_style",
+      "label": "t:settings.search_bar_style",
+      "options": [
+        {
+          "value": "icon",
+          "label": "t:options.icons"
+        },
+        {
+          "value": "bar",
+          "label": "t:options.bar"
+        }
+      ],
+      "default": "icon",
+      "visible_if": "{{ section.settings.show_search }}"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "t:settings.search_placeholder",
+      "visible_if": "{{ section.settings.show_search and section.settings.search_bar_style == 'bar' }}"
     },
     {
       "type": "select",

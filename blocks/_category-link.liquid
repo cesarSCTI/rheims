@@ -1,0 +1,111 @@
+{%- doc -%}
+  Renders a single category link row inside a `_category-group` block.
+
+  The link's URL and title come from a Collection picked in the block
+  settings; the icon comes from that collection's `custom.category_icon`
+  image metafield, falling back to a static placeholder icon when the
+  metafield hasn't been set.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign collection = block_settings.collection
+  assign link_title = block_settings.title | default: collection.title
+  assign link_url = collection.url | default: '#'
+  assign icon_image = collection.metafields.custom.category_icon.value
+%}
+
+<li
+  class="categories-drawer__link-item"
+  {{ block.shopify_attributes }}
+>
+  <a
+    href="{{ link_url }}"
+    class="categories-drawer__link"
+    {% if collection == blank %}
+      aria-disabled="true"
+    {% endif %}
+  >
+    <span class="categories-drawer__link-icon">
+      {% if icon_image != blank %}
+        {% render 'image',
+          image: icon_image,
+          height: 32,
+          class: 'categories-drawer__icon-image',
+          alt_text_fallback: link_title
+        %}
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0937/6392/8371/files/image_67.png?v=1789581293"
+          width="32"
+          height="32"
+          alt=""
+          loading="lazy"
+          class="categories-drawer__icon-image"
+        >
+      {% endif %}
+    </span>
+    <span class="categories-drawer__link-label">{{ link_title | default: 'Link' }}</span>
+  </a>
+</li>
+
+{% stylesheet %}
+  .categories-drawer__link-item {
+    list-style: none;
+  }
+
+  .categories-drawer__link {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding: var(--padding-xs) 0;
+    text-decoration: none;
+    color: var(--menu-child-font-color, var(--color-foreground));
+  }
+
+  .categories-drawer__link:hover {
+    color: var(--menu-child-font-color, var(--color-foreground));
+  }
+
+  .categories-drawer__link-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  .categories-drawer__icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .categories-drawer__link-label {
+    font-size: var(--font-size--sm);
+    line-height: 1.2;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.category_link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:settings.collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    }
+  ]
+}
+{% endschema %}
