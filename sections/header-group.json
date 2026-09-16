@@ -66,14 +66,14 @@
             "text_color": "{{ settings.color_palette.foreground }}"
           },
           "blocks": {
-            "group_compresores": {
+            "category_group_YGGzGj": {
               "type": "_category-group",
               "settings": {
                 "title": "Compresores",
                 "open_by_default": true
               },
               "blocks": {
-                "link_compresores_filtros": {
+                "category_link_yMkVfq": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "compresores-filtros",
@@ -82,7 +82,7 @@
                   },
                   "blocks": {}
                 },
-                "link_compresores_insumos": {
+                "category_link_g397me": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "compresores-insumos",
@@ -91,7 +91,7 @@
                   },
                   "blocks": {}
                 },
-                "link_compresores_refacciones": {
+                "category_link_VRUzgR": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "compresores-refacciones",
@@ -102,9 +102,9 @@
                 }
               },
               "block_order": [
-                "link_compresores_filtros",
-                "link_compresores_insumos",
-                "link_compresores_refacciones"
+                "category_link_yMkVfq",
+                "category_link_g397me",
+                "category_link_VRUzgR"
               ]
             },
             "group_manipuladores": {
@@ -222,7 +222,7 @@
             }
           },
           "block_order": [
-            "group_compresores",
+            "category_group_YGGzGj",
             "group_manipuladores",
             "group_corte_laser",
             "group_soldadura_laser"
