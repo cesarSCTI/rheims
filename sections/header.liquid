@@ -127,12 +127,7 @@
     endif
   endif
   capture search
-    render 'search',
-      style: search_style,
-      class: search_class,
-      display_style: section.settings.actions_display_style,
-      bar_style: section.settings.search_bar_style,
-      placeholder: section.settings.search_placeholder
+    render 'search', style: search_style, class: search_class, display_style: section.settings.actions_display_style, bar_style: section.settings.search_bar_style, placeholder: section.settings.search_placeholder
   endcapture
 
   # Skip drawer search under specific conditions:
