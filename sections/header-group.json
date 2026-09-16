@@ -232,7 +232,9 @@
       "custom_css": [
         ".categories-drawer__group-title {color: #174895;}",
         "span.categories-drawer__link-label {font-family: var(--font-heading--family);}",
-        "li.categories-drawer__group-item {border-block-end: 1px solid #174895;}"
+        "li.categories-drawer__group-item {border-block-end: 1px solid #174895;}",
+        ".search-action__bar-button {border: solid 1px #e9e9e9;}",
+        ".search-action__bar-button .svg-wrapper {height: auto;}"
       ],
       "settings": {
         "logo_position": "left",
