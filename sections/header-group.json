@@ -68,21 +68,21 @@
                 "open_by_default": false
               },
               "blocks": {
-                "link_filtros": {
+                "link_compresores_filtros": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Filtros"
                   }
                 },
-                "link_insumos": {
+                "link_compresores_insumos": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Insumos"
                   }
                 },
-                "link_refacciones": {
+                "link_compresores_refacciones": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
@@ -90,7 +90,7 @@
                   }
                 }
               },
-              "block_order": ["link_filtros", "link_insumos", "link_refacciones"]
+              "block_order": ["link_compresores_filtros", "link_compresores_insumos", "link_compresores_refacciones"]
             },
             "group_manipuladores": {
               "type": "_category-group",
@@ -99,7 +99,7 @@
                 "open_by_default": false
               },
               "blocks": {
-                "link_consumibles": {
+                "link_manipuladores_consumibles": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
@@ -107,7 +107,7 @@
                   }
                 }
               },
-              "block_order": ["link_consumibles"]
+              "block_order": ["link_manipuladores_consumibles"]
             },
             "group_corte_laser": {
               "type": "_category-group",
@@ -116,42 +116,42 @@
                 "open_by_default": true
               },
               "blocks": {
-                "link_componentes_vitales": {
+                "link_corte_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Componentes vitales"
                   }
                 },
-                "link_consumibles": {
+                "link_corte_consumibles": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Consumibles"
                   }
                 },
-                "link_herramientas_limpieza": {
+                "link_corte_herramientas_limpieza": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Herramientas de limpieza"
                   }
                 },
-                "link_refacciones": {
+                "link_corte_refacciones": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Refacciones"
                   }
                 },
-                "link_perifericos": {
+                "link_corte_perifericos": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
                     "title": "Periféricos"
                   }
                 },
-                "link_software": {
+                "link_corte_software": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
@@ -160,12 +160,12 @@
                 }
               },
               "block_order": [
-                "link_componentes_vitales",
-                "link_consumibles",
-                "link_herramientas_limpieza",
-                "link_refacciones",
-                "link_perifericos",
-                "link_software"
+                "link_corte_componentes_vitales",
+                "link_corte_consumibles",
+                "link_corte_herramientas_limpieza",
+                "link_corte_refacciones",
+                "link_corte_perifericos",
+                "link_corte_software"
               ]
             },
             "group_soldadura_laser": {
@@ -175,7 +175,7 @@
                 "open_by_default": false
               },
               "blocks": {
-                "link_componentes_vitales": {
+                "link_soldadura_componentes_vitales": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "",
@@ -183,7 +183,7 @@
                   }
                 }
               },
-              "block_order": ["link_componentes_vitales"]
+              "block_order": ["link_soldadura_componentes_vitales"]
             }
           },
           "block_order": [
