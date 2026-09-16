@@ -19,6 +19,7 @@
 
     {% if section.blocks.size > 0 %}
       <div class="features-grid__grid">
+
         {% for block in section.blocks %}
 
           {% liquid
@@ -26,20 +27,24 @@
           %}
 
           <article
+            id="feature-{{ block.id }}"
             class="features-grid__item"
             {{ block.shopify_attributes }}
           >
 
             {% if block.settings.icon != blank %}
               <div class="features-grid__icon-wrapper">
+
                 {{
                   block.settings.icon
                   | image_url: width: 300
                   | image_tag:
                     class: 'features-grid__icon',
-                    widths: '60, 100, 150, 200, 300',
+                    widths: '40, 60, 80, 100, 150, 200, 300',
+                    sizes: '100px',
                     loading: 'lazy'
                 }}
+
               </div>
             {% endif %}
 
@@ -59,18 +64,20 @@
 
           </article>
 
-          <style>
-            #{{ section_id }} [data-block-id="{{ block.id }}"] {}
-          </style>
-
         {% endfor %}
+
       </div>
     {% endif %}
 
   </div>
 </section>
 
+
 <style>
+
+  /* =========================================================
+     SECTION
+     ========================================================= */
 
   #{{ section_id }} {
     --section-background: {{ section.settings.background_color }};
@@ -96,17 +103,24 @@
     --grid-gap-row: {{ section.settings.row_gap }}px;
 
     width: 100%;
-    background: var(--section-background);
 
     padding:
       var(--padding-top-desktop)
       var(--horizontal-padding)
       var(--padding-bottom-desktop);
+
+    background: var(--section-background);
   }
 
+  #{{ section_id }},
   #{{ section_id }} * {
     box-sizing: border-box;
   }
+
+
+  /* =========================================================
+     CONTAINER
+     ========================================================= */
 
   #{{ section_id }} .features-grid__container {
     width: 100%;
@@ -115,12 +129,14 @@
   }
 
 
-  /* ========================================
-     TÍTULO PRINCIPAL
-     ======================================== */
+  /* =========================================================
+     MAIN HEADING
+     ========================================================= */
 
   #{{ section_id }} .features-grid__main-heading {
+    width: 100%;
     max-width: {{ section.settings.heading_max_width }}px;
+
     margin:
       0 auto
       var(--heading-bottom-spacing);
@@ -129,17 +145,20 @@
 
     font-size: var(--main-heading-size-desktop);
     font-weight: {{ section.settings.heading_weight }};
+
     line-height: {{ section.settings.heading_line_height | divided_by: 100.0 }};
 
     letter-spacing: {{ section.settings.heading_letter_spacing }}px;
 
     text-align: {{ section.settings.heading_alignment }};
+
+    overflow-wrap: anywhere;
   }
 
 
-  /* ========================================
+  /* =========================================================
      GRID
-     ======================================== */
+     ========================================================= */
 
   #{{ section_id }} .features-grid__grid {
     display: grid;
@@ -157,9 +176,9 @@
   }
 
 
-  /* ========================================
-     BLOQUE
-     ======================================== */
+  /* =========================================================
+     FEATURE ITEM
+     ========================================================= */
 
   #{{ section_id }} .features-grid__item {
     display: flex;
@@ -167,22 +186,25 @@
 
     align-items: {{ section.settings.item_alignment }};
 
-    text-align: {{ section.settings.text_alignment }};
-
+    width: 100%;
     min-width: 0;
+
+    text-align: {{ section.settings.text_alignment }};
   }
 
 
-  /* ========================================
-     ICONO
-     ======================================== */
+  /* =========================================================
+     ICON
+     ========================================================= */
 
   #{{ section_id }} .features-grid__icon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    flex-shrink: 0;
+    flex: 0 0 auto;
+
+    overflow: hidden;
 
     margin-bottom: {{ section.settings.icon_bottom_spacing }}px;
   }
@@ -190,34 +212,40 @@
   #{{ section_id }} .features-grid__icon {
     display: block;
 
-    width: auto;
-    height: auto;
-
     max-width: 100%;
+    max-height: 100%;
 
     object-fit: contain;
   }
 
 
-  /* ========================================
-     ITEM TITLE
-     ======================================== */
+  /* =========================================================
+     ITEM HEADING
+     ========================================================= */
 
   #{{ section_id }} .features-grid__item-heading {
+    width: 100%;
+
     margin: 0;
 
     line-height: 1.25;
+
+    overflow-wrap: anywhere;
   }
 
 
-  /* ========================================
-     TEXTO
-     ======================================== */
+  /* =========================================================
+     DESCRIPTION
+     ========================================================= */
 
   #{{ section_id }} .features-grid__text {
+    width: 100%;
+
     margin-top: {{ section.settings.text_top_spacing }}px;
 
     line-height: 1.6;
+
+    overflow-wrap: anywhere;
   }
 
   #{{ section_id }} .features-grid__text p {
@@ -228,33 +256,58 @@
     margin-top: 10px;
   }
 
+  #{{ section_id }} .features-grid__text a {
+    color: inherit;
+  }
 
-  /* ========================================
-     ESTILOS INDIVIDUALES POR BLOQUE
-     ======================================== */
+
+  /* =========================================================
+     INDIVIDUAL BLOCK SETTINGS
+     ========================================================= */
 
   {% for block in section.blocks %}
 
-    #{{ section_id }} .features-grid__item:nth-child({{ forloop.index }}) {
+    #{{ section_id }} #feature-{{ block.id }} {
 
       --item-heading-color: {{ block.settings.heading_color }};
-      --item-heading-size-desktop: {{ block.settings.heading_size_desktop }}px;
-      --item-heading-size-mobile: {{ block.settings.heading_size_mobile }}px;
 
-      --item-text-color: {{ block.settings.text_color }};
-      --item-text-size-desktop: {{ block.settings.text_size_desktop }}px;
-      --item-text-size-mobile: {{ block.settings.text_size_mobile }}px;
+      --item-heading-size-desktop:
+        {{ block.settings.heading_size_desktop }}px;
 
-      --icon-size-desktop: {{ block.settings.icon_size_desktop }}px;
-      --icon-size-mobile: {{ block.settings.icon_size_mobile }}px;
+      --item-heading-size-mobile:
+        {{ block.settings.heading_size_mobile }}px;
 
-      --icon-background: {{ block.settings.icon_background }};
-      --icon-background-size: {{ block.settings.icon_background_size }}px;
-      --icon-background-size-mobile: {{ block.settings.icon_background_size_mobile }}px;
+
+      --item-text-color:
+        {{ block.settings.text_color }};
+
+      --item-text-size-desktop:
+        {{ block.settings.text_size_desktop }}px;
+
+      --item-text-size-mobile:
+        {{ block.settings.text_size_mobile }}px;
+
+
+      --icon-size-desktop:
+        {{ block.settings.icon_size_desktop }}px;
+
+      --icon-size-mobile:
+        {{ block.settings.icon_size_mobile }}px;
+
+
+      --icon-background:
+        {{ block.settings.icon_background }};
+
+      --icon-background-size:
+        {{ block.settings.icon_background_size }}px;
+
+      --icon-background-size-mobile:
+        {{ block.settings.icon_background_size_mobile }}px;
     }
 
+
     #{{ section_id }}
-    .features-grid__item:nth-child({{ forloop.index }})
+    #feature-{{ block.id }}
     .features-grid__icon-wrapper {
 
       width: var(--icon-background-size);
@@ -265,16 +318,19 @@
       background: var(--icon-background);
     }
 
+
     #{{ section_id }}
-    .features-grid__item:nth-child({{ forloop.index }})
+    #feature-{{ block.id }}
     .features-grid__icon {
 
       width: var(--icon-size-desktop);
       height: var(--icon-size-desktop);
+
     }
 
+
     #{{ section_id }}
-    .features-grid__item:nth-child({{ forloop.index }})
+    #feature-{{ block.id }}
     .features-grid__item-heading {
 
       color: var(--item-heading-color);
@@ -282,36 +338,45 @@
       font-size: var(--item-heading-size-desktop);
 
       font-weight: {{ block.settings.heading_weight }};
+
     }
 
+
     #{{ section_id }}
-    .features-grid__item:nth-child({{ forloop.index }})
+    #feature-{{ block.id }}
     .features-grid__text {
 
       color: var(--item-text-color);
 
       font-size: var(--item-text-size-desktop);
+
     }
 
   {% endfor %}
 
 
-  /* ========================================
+  /* =========================================================
      TABLET
-     ======================================== */
+     ========================================================= */
 
   @media screen and (max-width: 989px) {
 
     #{{ section_id }} .features-grid__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(
+          {{ section.settings.columns_tablet }},
+          minmax(0, 1fr)
+        );
+
     }
 
   }
 
 
-  /* ========================================
+  /* =========================================================
      MOBILE
-     ======================================== */
+     ========================================================= */
 
   @media screen and (max-width: 749px) {
 
@@ -324,58 +389,75 @@
 
     }
 
+
     #{{ section_id }} .features-grid__main-heading {
 
       font-size: var(--main-heading-size-mobile);
 
     }
 
+
     #{{ section_id }} .features-grid__grid {
 
-      grid-template-columns: 1fr;
+      grid-template-columns:
+        repeat(
+          {{ section.settings.columns_mobile }},
+          minmax(0, 1fr)
+        );
+
+      column-gap: {{ section.settings.column_gap_mobile }}px;
 
       row-gap: {{ section.settings.row_gap_mobile }}px;
 
     }
 
+
     #{{ section_id }} .features-grid__item {
 
-      align-items: {{ section.settings.item_alignment_mobile }};
+      align-items:
+        {{ section.settings.item_alignment_mobile }};
 
-      text-align: {{ section.settings.text_alignment_mobile }};
+      text-align:
+        {{ section.settings.text_alignment_mobile }};
 
     }
+
 
     {% for block in section.blocks %}
 
       #{{ section_id }}
-      .features-grid__item:nth-child({{ forloop.index }})
+      #feature-{{ block.id }}
       .features-grid__icon-wrapper {
 
         width: var(--icon-background-size-mobile);
+
         height: var(--icon-background-size-mobile);
 
       }
 
+
       #{{ section_id }}
-      .features-grid__item:nth-child({{ forloop.index }})
+      #feature-{{ block.id }}
       .features-grid__icon {
 
         width: var(--icon-size-mobile);
+
         height: var(--icon-size-mobile);
 
       }
 
+
       #{{ section_id }}
-      .features-grid__item:nth-child({{ forloop.index }})
+      #feature-{{ block.id }}
       .features-grid__item-heading {
 
         font-size: var(--item-heading-size-mobile);
 
       }
 
+
       #{{ section_id }}
-      .features-grid__item:nth-child({{ forloop.index }})
+      #feature-{{ block.id }}
       .features-grid__text {
 
         font-size: var(--item-text-size-mobile);
@@ -461,6 +543,10 @@
           "label": "H5"
         },
         {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
           "value": "p",
           "label": "Párrafo"
         },
@@ -536,6 +622,10 @@
         {
           "value": "700",
           "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
         }
       ]
     },
@@ -593,16 +683,43 @@
       "type": "range",
       "id": "columns_desktop",
       "label": "Columnas desktop",
-      "min": 2,
-      "max": 4,
+      "min": 1,
+      "max": 6,
       "step": 1,
       "default": 3
     },
 
     {
       "type": "range",
+      "id": "columns_tablet",
+      "label": "Columnas tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columnas mobile",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 columna"
+        },
+        {
+          "value": "2",
+          "label": "2 columnas"
+        }
+      ]
+    },
+
+    {
+      "type": "range",
       "id": "column_gap",
-      "label": "Separación horizontal",
+      "label": "Separación horizontal desktop",
       "min": 0,
       "max": 120,
       "step": 4,
@@ -613,7 +730,7 @@
     {
       "type": "range",
       "id": "row_gap",
-      "label": "Separación vertical",
+      "label": "Separación vertical desktop",
       "min": 0,
       "max": 120,
       "step": 4,
@@ -623,8 +740,19 @@
 
     {
       "type": "range",
+      "id": "column_gap_mobile",
+      "label": "Separación horizontal mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+
+    {
+      "type": "range",
       "id": "row_gap_mobile",
-      "label": "Separación mobile",
+      "label": "Separación vertical mobile",
       "min": 10,
       "max": 100,
       "step": 2,
@@ -738,7 +866,7 @@
       "type": "range",
       "id": "heading_bottom_spacing",
       "label": "Espacio después del título",
-      "min": 20,
+      "min": 0,
       "max": 120,
       "step": 5,
       "unit": "px",
@@ -1030,6 +1158,10 @@
             {
               "value": "700",
               "label": "Bold"
+            },
+            {
+              "value": "800",
+              "label": "Extra Bold"
             }
           ]
         },
@@ -1089,6 +1221,7 @@
 
     {
       "name": "Grid de beneficios",
+
       "blocks": [
         {
           "type": "feature"
