@@ -1,0 +1,308 @@
+{%- doc -%}
+  "Popular categories" grid: a title + CTA button row followed by a
+  responsive grid of category cards (one `_popular-category-card` block
+  per card). Each card links to a collection; its image can be overridden
+  per card and otherwise falls back to the collection's featured image.
+{%- enddoc -%}
+
+{% liquid
+  assign settings = section.settings
+
+  assign button_font_var = '--font-' | append: settings.button_font | append: '--family'
+  assign button_font_weight_var = '--font-' | append: settings.button_font | append: '--weight'
+
+  assign image_ratio = settings.image_ratio
+  if image_ratio == 'adapt'
+    assign image_ratio = ''
+  endif
+%}
+
+<div
+  class="section section--{{ settings.section_width }} popular-categories spacing-style"
+  style="
+    {% render 'spacing-style', settings: settings %}
+    --popular-categories-columns-mobile: {{ settings.columns_mobile }};
+    --popular-categories-columns-desktop: {{ settings.columns_desktop }};
+    --popular-categories-gap: {{ settings.gap }}px;
+    {% if image_ratio != blank %}
+      --popular-categories-image-ratio: {{ image_ratio }};
+    {% endif %}
+    --popular-categories-image-radius: {{ settings.image_radius }}px;
+    {% if settings.heading_color != blank %}
+      --popular-categories-title-color: {{ settings.heading_color }};
+    {% endif %}
+    --popular-categories-cta-bg: {{ settings.button_background_color | default: 'var(--color-primary-button-background)' }};
+    --popular-categories-cta-text: {{ settings.button_text_color | default: 'var(--color-primary-button-text)' }};
+    --popular-categories-cta-hover-bg: {{ settings.button_hover_background_color | default: settings.button_background_color | default: 'var(--color-primary-button-background)' }};
+    --popular-categories-cta-font-family: var({{ button_font_var }});
+    --popular-categories-cta-font-weight: var({{ button_font_weight_var }});
+  "
+>
+  <div class="popular-categories__header">
+    {% if settings.heading != blank %}
+      <{{ settings.heading_tag }} class="popular-categories__heading">
+        {{- settings.heading -}}
+      </{{ settings.heading_tag }}>
+    {% endif %}
+
+    {% if settings.button_label != blank %}
+      <a
+        {% if settings.button_link != blank %}
+          href="{{ settings.button_link }}"
+        {% else %}
+          href="{{ routes.all_products_collection_url }}"
+        {% endif %}
+        class="popular-categories__cta"
+      >
+        {{ settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="popular-categories__grid">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .popular-categories__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-md);
+    margin-block-end: var(--margin-lg, 24px);
+  }
+
+  .popular-categories__heading {
+    margin: 0;
+    color: var(--popular-categories-title-color, var(--color-foreground));
+  }
+
+  .popular-categories__cta {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 0.75em 1.5em;
+    border-radius: var(--style-border-radius-buttons-primary, 4px);
+    background-color: var(--popular-categories-cta-bg);
+    color: var(--popular-categories-cta-text);
+    font-family: var(--popular-categories-cta-font-family);
+    font-weight: var(--popular-categories-cta-font-weight);
+    transition: background-color var(--animation-speed) var(--animation-easing);
+  }
+
+  .popular-categories__cta:hover {
+    background-color: var(--popular-categories-cta-hover-bg);
+    color: var(--popular-categories-cta-text);
+  }
+
+  .popular-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--popular-categories-columns-mobile, 2), minmax(0, 1fr));
+    gap: var(--popular-categories-gap, 16px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .popular-categories__grid {
+      grid-template-columns: repeat(var(--popular-categories-columns-desktop, 4), minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.popular_categories",
+  "class": "section--popular-categories",
+  "blocks": [
+    {
+      "type": "_popular-category-card"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Categorías populares"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "t:settings.heading_tag",
+      "options": [
+        { "value": "h1", "label": "t:options.h1" },
+        { "value": "h2", "label": "t:options.h2" },
+        { "value": "h3", "label": "t:options.h3" },
+        { "value": "h4", "label": "t:options.h4" },
+        { "value": "h5", "label": "t:options.h5" },
+        { "value": "h6", "label": "t:options.h6" },
+        { "value": "p", "label": "t:options.paragraph" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:settings.text_color",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.label",
+      "default": "Ver todos los productos"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:settings.link",
+      "info": "t:info.default_all_products"
+    },
+    {
+      "type": "select",
+      "id": "button_font",
+      "label": "t:settings.font",
+      "options": [
+        { "value": "body", "label": "t:options.body" },
+        { "value": "subheading", "label": "t:options.subheading" },
+        { "value": "heading", "label": "t:options.heading" },
+        { "value": "accent", "label": "t:options.accent" }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "t:settings.background",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:settings.text",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background_color",
+      "label": "t:settings.hover_background",
+      "placeholder": "t:settings.default"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "t:settings.columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:settings.mobile_columns",
+      "options": [
+        { "value": "1", "label": "t:options.one_number" },
+        { "value": "2", "label": "t:options.two_number" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:settings.image_ratio",
+      "options": [
+        { "value": "1 / 1", "label": "t:options.square" },
+        { "value": "4 / 3", "label": "t:options.landscape" },
+        { "value": "3 / 4", "label": "t:options.portrait" },
+        { "value": "adapt", "label": "t:options.auto" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "t:settings.image_border_radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.popular_categories",
+      "category": "t:categories.collections",
+      "blocks": {
+        "card_1": { "type": "_popular-category-card" },
+        "card_2": { "type": "_popular-category-card" },
+        "card_3": { "type": "_popular-category-card" },
+        "card_4": { "type": "_popular-category-card" }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4"]
+    }
+  ]
+}
+{% endschema %}

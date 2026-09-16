@@ -1,0 +1,132 @@
+{%- doc -%}
+  Renders one card inside the "Popular categories" section. The image can be
+  overridden per card; when left blank it falls back to the linked
+  collection's featured image, and finally to a placeholder graphic.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+  assign collection = block_settings.collection
+  assign card_title = block_settings.title | default: collection.title
+  assign card_url = collection.url | default: '#'
+  assign card_image = block_settings.image | default: collection.featured_image
+%}
+
+<a
+  href="{{ card_url }}"
+  class="popular-category-card"
+  {% if collection == blank %}
+    aria-disabled="true"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  <span class="popular-category-card__image-wrap">
+    {% if card_image != blank %}
+      {% render 'image',
+        image: card_image,
+        class: 'popular-category-card__image',
+        alt_text_fallback: card_title,
+        height: 400
+      %}
+    {% else %}
+      <span class="popular-category-card__placeholder">
+        {{ 'collection-1' | placeholder_svg_tag: 'popular-category-card__placeholder-icon' }}
+        <span class="popular-category-card__placeholder-text">
+          {{ 'content.image_unavailable' | t }}
+        </span>
+      </span>
+    {% endif %}
+  </span>
+  <span class="popular-category-card__title">{{ card_title | default: 'Category' }}</span>
+</a>
+
+{% stylesheet %}
+  .popular-category-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+    text-decoration: none;
+    color: var(--popular-categories-title-color, var(--color-primary-button-background, var(--color-foreground)));
+  }
+
+  .popular-category-card:hover {
+    color: var(--popular-categories-title-color, var(--color-primary-button-background, var(--color-foreground)));
+  }
+
+  .popular-category-card__image-wrap {
+    display: block;
+    aspect-ratio: var(--popular-categories-image-ratio, 1 / 1);
+    background-color: var(--color-foreground-muted, #f2f2f2);
+    opacity: 1;
+    overflow: hidden;
+    border-radius: var(--popular-categories-image-radius, 0px);
+  }
+
+  .popular-category-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .popular-category-card__placeholder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-2xs);
+    background-color: rgb(var(--color-foreground-rgb) / 0.06);
+  }
+
+  .popular-category-card__placeholder-icon {
+    width: 40%;
+    height: 40%;
+    opacity: 0.4;
+  }
+
+  .popular-category-card__placeholder-text {
+    font-size: var(--font-size--xs);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-muted-text, 0.6));
+  }
+
+  .popular-category-card__title {
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--sm);
+    line-height: 1.3;
+  }
+
+  @media screen and (min-width: 750px) {
+    .popular-category-card__title {
+      font-size: var(--font-size--md);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.popular_category_card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:settings.collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    }
+  ]
+}
+{% endschema %}

@@ -273,10 +273,26 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "popular_categories_test": {
+      "type": "popular-categories",
+      "blocks": {
+        "card_1": {
+          "type": "_popular-category-card",
+          "settings": { "collection": "", "title": "Filtros" }
+        },
+        "card_2": {
+          "type": "_popular-category-card",
+          "settings": { "collection": "", "title": "Insumos" }
+        }
+      },
+      "block_order": ["card_1", "card_2"],
+      "settings": {}
     }
   },
   "order": [
     "hero_jVaWmY",
+    "popular_categories_test",
     "product_list_fa6P9H"
   ]
 }
