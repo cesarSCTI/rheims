@@ -171,9 +171,146 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "category_groups_grid_wBhr7g": {
+      "type": "category-groups-grid",
+      "blocks": {
+        "collection_group_T6fgHt": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Filtros",
+            "heading_tag": "h3",
+            "collections": [],
+            "custom_labels": "",
+            "desktop_width": "8",
+            "tablet_width": "12",
+            "columns_desktop": 4,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": false,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        },
+        "collection_group_LCBpAc": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Insumos",
+            "heading_tag": "h3",
+            "collections": [],
+            "custom_labels": "",
+            "desktop_width": "4",
+            "tablet_width": "12",
+            "columns_desktop": 2,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": true,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        },
+        "collection_group_mPdfVV": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Refacciones",
+            "heading_tag": "h3",
+            "collections": [],
+            "custom_labels": "",
+            "desktop_width": "12",
+            "tablet_width": "12",
+            "columns_desktop": 3,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": false,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        }
+      },
+      "block_order": [
+        "collection_group_T6fgHt",
+        "collection_group_LCBpAc",
+        "collection_group_mPdfVV"
+      ],
+      "name": "Grid categorías",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "container_width": 1400,
+        "heading": "Compresores",
+        "heading_tag": "h2",
+        "heading_color": "#174E96",
+        "heading_size_desktop": 27,
+        "heading_size_mobile": 24,
+        "heading_weight": "700",
+        "heading_alignment": "left",
+        "heading_line_height": 120,
+        "heading_letter_spacing": 0,
+        "heading_bottom_spacing": 16,
+        "heading_bottom_spacing_mobile": 20,
+        "groups_horizontal_gap": 20,
+        "groups_vertical_gap": 22,
+        "groups_vertical_gap_mobile": 36,
+        "separator_color": "#9ABEFF",
+        "separator_width": 1,
+        "separator_spacing": 20,
+        "hide_vertical_separators_mobile": true,
+        "show_bottom_separator": true,
+        "bottom_separator_color": "#9ABEFF",
+        "bottom_separator_width": 1,
+        "bottom_separator_spacing": 24,
+        "image_bottom_spacing": 8,
+        "image_hover_scale": 103,
+        "collection_title_line_height": 125,
+        "padding_top": 12,
+        "padding_bottom": 15,
+        "padding_horizontal": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25,
+        "padding_horizontal_mobile": 20
+      }
     }
   },
   "order": [
-    "collection_list_Wfgh3m"
+    "collection_list_Wfgh3m",
+    "category_groups_grid_wBhr7g"
   ]
 }
