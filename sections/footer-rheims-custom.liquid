@@ -1,0 +1,1056 @@
+{% liquid
+  assign section_id = 'footer-rheims-' | append: section.id
+  assign heading_tag = section.settings.heading_tag | default: 'h2'
+  assign equipment_options = section.settings.equipment_options | newline_to_br | split: '<br />'
+%}
+
+<footer id="{{ section_id }}" class="rheims-footer">
+  <div class="rheims-footer__inner page-width">
+
+    <div class="rheims-footer__top">
+      <div class="rheims-footer__intro">
+        {% if section.settings.heading != blank %}
+          <{{ heading_tag }} class="rheims-footer__heading">
+            {{ section.settings.heading }}
+          </{{ heading_tag }}>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <div class="rheims-footer__text rte">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.linkedin_url != blank %}
+          <a
+            href="{{ section.settings.linkedin_url }}"
+            class="rheims-footer__linkedin"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56c0-1.06-.84-1.94-1.91-1.94-1.06 0-1.9.88-1.9 1.94 0 1.03.84 1.9 1.9 1.9 1.07 0 1.91-.87 1.91-1.9Zm12.68 8.03c0-3.1-1.66-4.54-3.88-4.54-1.79 0-2.59.98-3.04 1.68V8.5H9.55c.04 1.07 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.68.13-.93.27-.68.88-1.39 1.91-1.39 1.35 0 1.89 1.03 1.89 2.54V20h3.37v-7.03Z" fill="currentColor"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="rheims-footer__form-wrap">
+        {% assign contact_form_id = 'RheimsFooterContact-' | append: section.id %}
+
+        {% form 'contact', id: contact_form_id, class: 'rheims-footer__form' %}          {% if form.posted_successfully? %}
+            <div class="rheims-footer__form-message rheims-footer__form-message--success">
+              {{ section.settings.success_message }}
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="rheims-footer__form-message rheims-footer__form-message--error">
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="rheims-footer__field rheims-footer__field--select">
+            <select
+              name="contact[Equipo de interés]"
+              aria-label="Equipo de interés"
+            >
+              <option value="" selected disabled>
+                {{ section.settings.placeholder_equipment }}
+              </option>
+
+              {% for option in equipment_options %}
+                {% assign option_clean = option | strip %}
+                {% if option_clean != blank %}
+                  <option value="{{ option_clean | escape }}">
+                    {{ option_clean }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <span class="rheims-footer__select-icon">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="rheims-footer__field">
+            <input
+              type="text"
+              name="contact[Empresa]"
+              placeholder="{{ section.settings.placeholder_company }}"
+              aria-label="Empresa"
+            >
+          </div>
+
+          <div class="rheims-footer__field">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="{{ section.settings.placeholder_email }}"
+              aria-label="Correo electrónico"
+              autocorrect="off"
+              autocapitalize="off"
+            >
+          </div>
+
+          <div class="rheims-footer__field">
+            <input
+              type="text"
+              name="contact[Nombre]"
+              placeholder="{{ section.settings.placeholder_name }}"
+              aria-label="Nombre"
+            >
+          </div>
+
+          <div class="rheims-footer__field">
+            <input
+              type="tel"
+              name="contact[Teléfono]"
+              placeholder="{{ section.settings.placeholder_phone }}"
+              aria-label="Teléfono"
+            >
+          </div>
+
+          <div class="rheims-footer__field rheims-footer__field--textarea">
+            <textarea
+              name="contact[body]"
+              placeholder="{{ section.settings.placeholder_message }}"
+              aria-label="Mensaje"
+              rows="7"
+            ></textarea>
+          </div>
+
+          <div class="rheims-footer__actions">
+            <button type="submit" class="rheims-footer__button">
+              {{ section.settings.button_label }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="rheims-footer__separator"></div>
+
+    <div class="rheims-footer__bottom">
+      <div class="rheims-footer__brand">
+        {% if section.settings.logo != blank %}
+          <a href="{{ routes.root_url }}" class="rheims-footer__logo-link" aria-label="{{ shop.name }}">
+            {{
+              section.settings.logo
+              | image_url: width: 400
+              | image_tag:
+                class: 'rheims-footer__logo',
+                widths: '120, 160, 200, 280, 400',
+                loading: 'lazy',
+                alt: shop.name
+            }}
+          </a>
+        {% else %}
+          <a href="{{ routes.root_url }}" class="rheims-footer__logo-text">
+            {{ section.settings.logo_fallback }}
+          </a>
+        {% endif %}
+
+        <div class="rheims-footer__legal">
+          {% if section.settings.privacy_label != blank and section.settings.privacy_url != blank %}
+            <a href="{{ section.settings.privacy_url }}">{{ section.settings.privacy_label }}</a>
+          {% endif %}
+
+          {% if section.settings.terms_label != blank and section.settings.terms_url != blank %}
+            <a href="{{ section.settings.terms_url }}">{{ section.settings.terms_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="rheims-footer__menu-col">
+        {% if section.settings.menu_heading != blank %}
+          <h3 class="rheims-footer__small-heading">{{ section.settings.menu_heading }}</h3>
+        {% endif %}
+
+        {% if section.settings.footer_menu != blank %}
+          <ul class="rheims-footer__menu list-unstyled" role="list">
+            {% for link in section.settings.footer_menu.links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="rheims-footer__contact-col">
+        {% if section.settings.contact_heading != blank %}
+          <h3 class="rheims-footer__small-heading">{{ section.settings.contact_heading }}</h3>
+        {% endif %}
+
+        <div class="rheims-footer__contact-info">
+          {% if section.settings.phone != blank %}
+            <p>
+              <span>{{ section.settings.phone_label }}</span>
+              <strong>{{ section.settings.phone }}</strong>
+            </p>
+          {% endif %}
+
+          {% if section.settings.address != blank %}
+            <p>{{ section.settings.address | newline_to_br }}</p>
+          {% endif %}
+        </div>
+
+        {% if section.settings.copyright != blank %}
+          <div class="rheims-footer__copyright">
+            {{ section.settings.copyright }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  #{{ section_id }} {
+    --bg: {{ section.settings.background_color }};
+    --text: {{ section.settings.text_color }};
+    --muted: {{ section.settings.muted_text_color }};
+    --line: {{ section.settings.separator_color }};
+    --accent: {{ section.settings.accent_color }};
+    --panel: {{ section.settings.form_background_color }};
+    --panel-border: {{ section.settings.form_border_color }};
+    --field-bg: {{ section.settings.field_background_color }};
+    --field-border: {{ section.settings.field_border_color }};
+    --button-bg: {{ section.settings.button_background_color }};
+    --button-text: {{ section.settings.button_text_color }};
+    --button-bg-hover: {{ section.settings.button_background_hover_color }};
+    --button-text-hover: {{ section.settings.button_text_hover_color }};
+    --content-max-width: {{ section.settings.content_max_width }}px;
+
+    position: relative;
+    color: var(--text);
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(58, 100, 190, 0.10) 18%,
+        rgba(255,255,255,0) 34%,
+        rgba(58, 100, 190, 0.08) 50%,
+        rgba(255,255,255,0) 66%,
+        rgba(58, 100, 190, 0.08) 82%,
+        rgba(255,255,255,0) 100%
+      ),
+      var(--bg);
+    overflow: hidden;
+  }
+
+  #{{ section_id }} *,
+  #{{ section_id }} *::before,
+  #{{ section_id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #{{ section_id }} .page-width {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding:
+      {{ section.settings.padding_top }}px
+      {{ section.settings.padding_horizontal }}px
+      {{ section.settings.padding_bottom }}px;
+  }
+
+  #{{ section_id }} .rheims-footer__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+    gap: 40px;
+    align-items: start;
+  }
+
+  #{{ section_id }} .rheims-footer__intro {
+    min-width: 0;
+    max-width: 480px;
+    padding-top: 4px;
+  }
+
+  #{{ section_id }} .rheims-footer__heading {
+    margin: 0 0 16px;
+    color: var(--text);
+    font-size: {{ section.settings.heading_size_desktop }}px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  #{{ section_id }} .rheims-footer__text {
+    color: var(--text);
+    font-size: {{ section.settings.body_size_desktop }}px;
+    line-height: 1.7;
+    max-width: 430px;
+    opacity: 0.95;
+  }
+
+  #{{ section_id }} .rheims-footer__text p {
+    margin: 0;
+  }
+
+  #{{ section_id }} .rheims-footer__linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-top: 18px;
+    color: var(--text);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  #{{ section_id }} .rheims-footer__linkedin:hover {
+    opacity: .8;
+    transform: translateY(-1px);
+  }
+
+  #{{ section_id }} .rheims-footer__linkedin svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+  }
+
+  #{{ section_id }} .rheims-footer__form-wrap {
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #{{ section_id }} .rheims-footer__form {
+    width: 100%;
+    max-width: 388px;
+    padding: 16px;
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--panel) 94%, transparent);
+    border: 1px solid color-mix(in srgb, var(--panel-border) 50%, transparent);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    backdrop-filter: blur(3px);
+  }
+
+  #{{ section_id }} .rheims-footer__form-message {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  #{{ section_id }} .rheims-footer__form-message--success {
+    background: rgba(60, 160, 90, .15);
+    border: 1px solid rgba(60, 160, 90, .35);
+  }
+
+  #{{ section_id }} .rheims-footer__form-message--error {
+    background: rgba(190, 70, 70, .15);
+    border: 1px solid rgba(190, 70, 70, .35);
+  }
+
+  #{{ section_id }} .rheims-footer__field {
+    position: relative;
+    margin-bottom: 9px;
+  }
+
+  #{{ section_id }} .rheims-footer__field input,
+  #{{ section_id }} .rheims-footer__field select,
+  #{{ section_id }} .rheims-footer__field textarea {
+    width: 100%;
+    border: 1px solid var(--field-border);
+    background: var(--field-bg);
+    color: var(--text);
+    border-radius: 9px;
+    padding: 0 14px;
+    outline: none;
+    font-size: 13px;
+    font-family: inherit;
+    box-shadow: none;
+    appearance: none;
+  }
+
+  #{{ section_id }} .rheims-footer__field input,
+  #{{ section_id }} .rheims-footer__field select {
+    height: 34px;
+  }
+
+  #{{ section_id }} .rheims-footer__field textarea {
+    min-height: 142px;
+    resize: vertical;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  #{{ section_id }} .rheims-footer__field input::placeholder,
+  #{{ section_id }} .rheims-footer__field textarea::placeholder {
+    color: rgba(255,255,255,.82);
+    opacity: 1;
+  }
+
+  #{{ section_id }} .rheims-footer__field select {
+    color: rgba(255,255,255,.82);
+    padding-right: 42px;
+  }
+
+  #{{ section_id }} .rheims-footer__field option {
+    color: #111;
+  }
+
+  #{{ section_id }} .rheims-footer__field input:focus,
+  #{{ section_id }} .rheims-footer__field select:focus,
+  #{{ section_id }} .rheims-footer__field textarea:focus {
+    border-color: rgba(255,255,255,.75);
+  }
+
+  #{{ section_id }} .rheims-footer__select-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    pointer-events: none;
+    color: rgba(255,255,255,.9);
+  }
+
+  #{{ section_id }} .rheims-footer__select-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #{{ section_id }} .rheims-footer__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+  }
+
+  #{{ section_id }} .rheims-footer__button {
+    min-height: 34px;
+    border: 0;
+    border-radius: 11px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease, transform .25s ease;
+  }
+
+  #{{ section_id }} .rheims-footer__button:hover {
+    background: var(--button-bg-hover);
+    color: var(--button-text-hover);
+    transform: translateY(-1px);
+  }
+
+  #{{ section_id }} .rheims-footer__separator {
+    width: 100%;
+    height: 1px;
+    margin: 54px 0 34px;
+    background: var(--line);
+    opacity: 0.95;
+  }
+
+  #{{ section_id }} .rheims-footer__bottom {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.3fr) minmax(120px, .8fr) minmax(220px, 1fr);
+    gap: 34px;
+    align-items: start;
+  }
+
+  #{{ section_id }} .rheims-footer__brand,
+  #{{ section_id }} .rheims-footer__menu-col,
+  #{{ section_id }} .rheims-footer__contact-col {
+    min-width: 0;
+  }
+
+  #{{ section_id }} .rheims-footer__logo-link,
+  #{{ section_id }} .rheims-footer__logo-text {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  #{{ section_id }} .rheims-footer__logo {
+    display: block;
+    width: {{ section.settings.logo_width }}px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  #{{ section_id }} .rheims-footer__logo-text {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .02em;
+  }
+
+  #{{ section_id }} .rheims-footer__legal {
+    margin-top: 92px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  #{{ section_id }} .rheims-footer__legal a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  #{{ section_id }} .rheims-footer__legal a:hover {
+    text-decoration: underline;
+  }
+
+  #{{ section_id }} .rheims-footer__small-heading {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  #{{ section_id }} .rheims-footer__menu {
+    margin: 0;
+    padding: 0;
+  }
+
+  #{{ section_id }} .rheims-footer__menu li + li {
+    margin-top: 8px;
+  }
+
+  #{{ section_id }} .rheims-footer__menu a,
+  #{{ section_id }} .rheims-footer__contact-info p {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.9;
+    opacity: .95;
+  }
+
+  #{{ section_id }} .rheims-footer__menu a:hover {
+    text-decoration: underline;
+  }
+
+  #{{ section_id }} .rheims-footer__contact-info p {
+    margin: 0;
+  }
+
+  #{{ section_id }} .rheims-footer__contact-info p + p {
+    margin-top: 2px;
+  }
+
+  #{{ section_id }} .rheims-footer__contact-info span {
+    font-weight: 400;
+  }
+
+  #{{ section_id }} .rheims-footer__contact-info strong {
+    font-weight: 700;
+  }
+
+  #{{ section_id }} .rheims-footer__copyright {
+    margin-top: 28px;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: right;
+    opacity: .95;
+  }
+
+  @media screen and (max-width: 989px) {
+    #{{ section_id }} .rheims-footer__top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    #{{ section_id }} .rheims-footer__intro {
+      max-width: 100%;
+    }
+
+    #{{ section_id }} .rheims-footer__form-wrap {
+      justify-content: flex-start;
+    }
+
+    #{{ section_id }} .rheims-footer__bottom {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 24px;
+    }
+
+    #{{ section_id }} .rheims-footer__brand {
+      grid-column: 1 / -1;
+    }
+
+    #{{ section_id }} .rheims-footer__legal {
+      margin-top: 28px;
+    }
+
+    #{{ section_id }} .rheims-footer__copyright {
+      text-align: left;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #{{ section_id }} .page-width {
+      padding:
+        {{ section.settings.padding_top_mobile }}px
+        {{ section.settings.padding_horizontal_mobile }}px
+        {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #{{ section_id }} .rheims-footer__heading {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+    }
+
+    #{{ section_id }} .rheims-footer__text {
+      font-size: {{ section.settings.body_size_mobile }}px;
+      max-width: 100%;
+    }
+
+    #{{ section_id }} .rheims-footer__form {
+      max-width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+    }
+
+    #{{ section_id }} .rheims-footer__separator {
+      margin: 34px 0 28px;
+    }
+
+    #{{ section_id }} .rheims-footer__bottom {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    #{{ section_id }} .rheims-footer__logo {
+      width: {{ section.settings.logo_width_mobile }}px;
+    }
+
+    #{{ section_id }} .rheims-footer__logo-text {
+      font-size: 32px;
+    }
+
+    #{{ section_id }} .rheims-footer__legal {
+      margin-top: 18px;
+    }
+
+    #{{ section_id }} .rheims-footer__copyright {
+      margin-top: 18px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer Rheims custom",
+  "tag": "section",
+  "class": "section-footer-rheims-custom",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contenido izquierdo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "¿Listo para optimizar tu producción?"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Tag del título",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "div", "label": "DIV" },
+        { "value": "p", "label": "P" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Nuestro equipo está listo para ayudarte a elegir la maquinaria ideal para tu planta.</p>"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "URL de LinkedIn"
+    },
+
+    {
+      "type": "header",
+      "content": "Formulario"
+    },
+    {
+      "type": "textarea",
+      "id": "equipment_options",
+      "label": "Opciones de Equipo de interés",
+      "info": "Una opción por línea.",
+      "default": "Compresores\nCorte láser\nSoldadura láser\nDobladoras CNC\nPeriféricos"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_equipment",
+      "label": "Placeholder equipo",
+      "default": "Equipo de interés"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_company",
+      "label": "Placeholder empresa",
+      "default": "Empresa"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Placeholder correo",
+      "default": "Correo electrónico"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Placeholder nombre",
+      "default": "Nombre"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_phone",
+      "label": "Placeholder teléfono",
+      "default": "Teléfono"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_message",
+      "label": "Placeholder mensaje",
+      "default": "Mensaje"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto botón",
+      "default": "Enviar solicitud"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Mensaje de éxito",
+      "default": "Gracias. Hemos recibido tu mensaje."
+    },
+
+    {
+      "type": "header",
+      "content": "Zona inferior"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_fallback",
+      "label": "Texto de logo fallback",
+      "default": "RHEIMS"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Ancho logo desktop",
+      "min": 80,
+      "max": 260,
+      "step": 5,
+      "unit": "px",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Ancho logo mobile",
+      "min": 70,
+      "max": 220,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Texto privacidad",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "URL privacidad"
+    },
+    {
+      "type": "text",
+      "id": "terms_label",
+      "label": "Texto términos",
+      "default": "/Terms"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "URL términos"
+    },
+    {
+      "type": "text",
+      "id": "menu_heading",
+      "label": "Título columna menú",
+      "default": "titulo columna menú"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Menú"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Título contacto",
+      "default": "Contacto"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Etiqueta teléfono",
+      "default": "Teléfono:"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Teléfono",
+      "default": "56 4449 3851"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Dirección",
+      "default": "Tlajomulco de Zúñiga,\nJalisco, México"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "© 2025 Rheims, All right reserved"
+    },
+
+    {
+      "type": "header",
+      "content": "Estilos"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Ancho máximo",
+      "min": 900,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1360
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fondo",
+      "default": "#2B2E35"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de texto",
+      "default": "#F4F4F4"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Color texto secundario",
+      "default": "#D7D7D7"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Color acento",
+      "default": "#2F64C5"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Color separadores",
+      "default": "#8FA0C7"
+    },
+    {
+      "type": "color",
+      "id": "form_background_color",
+      "label": "Fondo del formulario",
+      "default": "#56585D"
+    },
+    {
+      "type": "color",
+      "id": "form_border_color",
+      "label": "Borde del formulario",
+      "default": "#80838A"
+    },
+    {
+      "type": "color",
+      "id": "field_background_color",
+      "label": "Fondo inputs",
+      "default": "#5E6064"
+    },
+    {
+      "type": "color",
+      "id": "field_border_color",
+      "label": "Borde inputs",
+      "default": "#C8C8C8"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Fondo botón",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Texto botón",
+      "default": "#2F64C5"
+    },
+    {
+      "type": "color",
+      "id": "button_background_hover_color",
+      "label": "Fondo botón hover",
+      "default": "#EDEDED"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Texto botón hover",
+      "default": "#254F9F"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Tamaño título desktop",
+      "min": 24,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "default": 33
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Tamaño título mobile",
+      "min": 20,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "body_size_desktop",
+      "label": "Tamaño texto desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "body_size_mobile",
+      "label": "Tamaño texto mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+
+    {
+      "type": "header",
+      "content": "Espaciados desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding superior",
+      "min": 0,
+      "max": 160,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding inferior",
+      "min": 0,
+      "max": 160,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+
+    {
+      "type": "header",
+      "content": "Espaciados mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding superior mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding inferior mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Padding horizontal mobile",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Rheims custom"
+    }
+  ]
+}
+{% endschema %}
