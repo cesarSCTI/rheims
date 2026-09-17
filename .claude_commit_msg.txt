@@ -1,0 +1,12 @@
+fix: declare header's static blocks in its own schema; fix doc tag in section
+
+- sections/header.liquid: add a "blocks" array ([_header-logo, _header-categories])
+  to the section's own schema. The blocks were already rendered via explicit
+  content_for 'block' calls, but header.liquid's schema never declared them,
+  which looks like why the editor's "Add block" picker showed nothing for
+  every level under Menu de categorias (confirmed: broken both at the
+  top-level static block and inside an existing _category-group).
+- sections/popular-categories.liquid: {% doc %} isn't valid in a section
+  (theme check: UnsupportedDocTag) -- switched to {% comment %}.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
