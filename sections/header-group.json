@@ -66,6 +66,16 @@
             "text_color": "{{ settings.color_palette.foreground }}"
           },
           "blocks": {
+            "category_custom_link_wqGae4": {
+              "type": "_category-custom-link",
+              "name": "t:names.category_custom_link",
+              "settings": {
+                "title": "Todas las categorías",
+                "url": "shopify://collections",
+                "copy": ""
+              },
+              "blocks": {}
+            },
             "category_group_YGGzGj": {
               "type": "_category-group",
               "settings": {
@@ -222,6 +232,7 @@
             }
           },
           "block_order": [
+            "category_custom_link_wqGae4",
             "category_group_YGGzGj",
             "group_manipuladores",
             "group_corte_laser",
