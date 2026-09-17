@@ -112,6 +112,7 @@
                 "price_tVjtKg": {
                   "type": "price",
                   "settings": {
+                    "show_discount": true,
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
@@ -126,8 +127,7 @@
                     "padding-block-start": 4,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
-                    "padding-inline-end": 0,
-                    "show_discount": true
+                    "padding-inline-end": 0
                   },
                   "blocks": {}
                 },
@@ -135,8 +135,8 @@
                   "type": "sku",
                   "settings": {
                     "type_preset": "custom",
-                    "font_size": "0.75rem",
-                    "width": "100%"
+                    "width": "100%",
+                    "font_size": "0.75rem"
                   }
                 }
               },
@@ -260,16 +260,15 @@
           ]
         }
       },
-      "block_order": [],
       "settings": {
+        "rheims_layout": true,
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 40,
         "padding-block-start": 32,
-        "padding-block-end": 0,
-        "rheims_layout": true
+        "padding-block-end": 0
       }
     },
     "product_recommendations_qggXJq": {
@@ -390,6 +389,7 @@
       ],
       "name": "t:names.product_recommendations",
       "settings": {
+        "rheims_layout": true,
         "product": "{{ closest.product }}",
         "recommendation_type": "related",
         "layout_type": "grid",
@@ -404,15 +404,11 @@
         "section_width": "page-width",
         "gap": 28,
         "padding-block-start": 48,
-        "padding-block-end": 48,
-        "rheims_layout": true
+        "padding-block-end": 48
       }
     },
     "specifications": {
       "type": "rheims-product-specifications",
-      "settings": {
-        "heading": "Especificaciones técnicas"
-      },
       "blocks": {
         "row_0": {
           "type": "specification",
@@ -464,7 +460,10 @@
         "row_3",
         "row_4",
         "row_5"
-      ]
+      ],
+      "settings": {
+        "heading": "Especificaciones técnicas"
+      }
     }
   },
   "order": [
