@@ -175,7 +175,7 @@
                 "link_corte_refacciones": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "soldadura-laser-refacciones",
+                    "collection": "corte-laser-refacciones",
                     "title": "Refacciones",
                     "text_color": ""
                   },
@@ -184,7 +184,7 @@
                 "link_corte_perifericos": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "soldadura-laser-perifericos",
+                    "collection": "corte-laser-perifericos",
                     "title": "Periféricos",
                     "text_color": ""
                   },
@@ -213,7 +213,7 @@
               "type": "_category-group",
               "name": "Soldadura láser",
               "settings": {
-                "title": "Corte láser",
+                "title": "Soldadura láser",
                 "open_by_default": true
               },
               "blocks": {
@@ -229,7 +229,7 @@
                 "category_link_x6B6E4": {
                   "type": "_category-link",
                   "settings": {
-                    "collection": "corte-laser-consumibles",
+                    "collection": "soldadura-laser-consumibles",
                     "title": "Consumibles",
                     "text_color": ""
                   },
@@ -280,6 +280,40 @@
                 "category_link_FfK8CG",
                 "category_link_LYMHrH"
               ]
+            },
+            "category_group_RbXYhA": {
+              "type": "_category-group",
+              "name": "Dobladoras CNC",
+              "settings": {
+                "title": "Dobladoras CNC",
+                "open_by_default": false
+              },
+              "blocks": {
+                "category_link_DMENBT": {
+                  "type": "_category-link",
+                  "name": "t:names.category_link",
+                  "settings": {
+                    "collection": "dobladoras-cnc-herramientas",
+                    "title": "Herramientas",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                },
+                "category_link_dTDfKA": {
+                  "type": "_category-link",
+                  "name": "t:names.category_link",
+                  "settings": {
+                    "collection": "dobladoras-cnc-refacciones",
+                    "title": "Refacciones",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "category_link_DMENBT",
+                "category_link_dTDfKA"
+              ]
             }
           },
           "block_order": [
@@ -287,7 +321,8 @@
             "category_group_YGGzGj",
             "group_manipuladores",
             "group_corte_laser",
-            "category_group_JrxTaC"
+            "category_group_JrxTaC",
+            "category_group_RbXYhA"
           ]
         }
       },
