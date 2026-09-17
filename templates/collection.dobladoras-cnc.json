@@ -63,24 +63,22 @@
         "dot_active_color": "#ffc400"
       }
     },
-    "category_groups_grid_wBhr7g": {
+    "category_groups_grid_698cpK": {
       "type": "category-groups-grid",
       "blocks": {
-        "collection_group_T6fgHt": {
+        "collection_group_ttVxWe": {
           "type": "collection_group",
           "settings": {
-            "heading": "Filtros",
+            "heading": "Herramientas",
             "heading_tag": "h3",
             "collections": [
-              "compresores-filtros-filtros-de-aire",
-              "compresores-filtros-separadores-aire-aceite",
-              "compresores-filtros-filtros-de-aceite",
-              "compresores-filtros-filtros-de-precision-coalescentes"
+              "dobladoras-cnc-herramientas-punzones",
+              "dobladoras-cnc-herramientas-matrices"
             ],
             "custom_labels": "",
-            "desktop_width": "8",
+            "desktop_width": "4",
             "tablet_width": "12",
-            "columns_desktop": 4,
+            "columns_desktop": 2,
             "columns_tablet": 3,
             "columns_mobile": "2",
             "column_gap": 14,
@@ -101,17 +99,16 @@
             "collection_title_weight": "400"
           }
         },
-        "collection_group_LCBpAc": {
+        "collection_group_NTCYNY": {
           "type": "collection_group",
           "settings": {
-            "heading": "Insumos",
+            "heading": "Refacciones",
             "heading_tag": "h3",
             "collections": [
-              "compresores-insumos-aceite",
-              "compresores-insumos-material-desecante"
+              "dobladoras-cnc-refacciones-control"
             ],
             "custom_labels": "",
-            "desktop_width": "4",
+            "desktop_width": "8",
             "tablet_width": "12",
             "columns_desktop": 2,
             "columns_tablet": 3,
@@ -133,52 +130,17 @@
             "collection_title_size_mobile": 14,
             "collection_title_weight": "400"
           }
-        },
-        "collection_group_mPdfVV": {
-          "type": "collection_group",
-          "settings": {
-            "heading": "Refacciones",
-            "heading_tag": "h3",
-            "collections": [
-              "compresores-refacciones-valvulas",
-              "compresores-refacciones-tornillos",
-              "compresores-refacciones-sensores"
-            ],
-            "custom_labels": "",
-            "desktop_width": "6",
-            "tablet_width": "12",
-            "columns_desktop": 3,
-            "columns_tablet": 3,
-            "columns_mobile": "2",
-            "column_gap": 14,
-            "row_gap": 20,
-            "column_gap_mobile": 12,
-            "row_gap_mobile": 20,
-            "show_vertical_separator": false,
-            "heading_color": "#111111",
-            "heading_size_desktop": 20,
-            "heading_size_mobile": 19,
-            "heading_weight": "700",
-            "heading_alignment": "left",
-            "image_size_desktop": 120,
-            "image_size_mobile": 100,
-            "collection_title_color": "#111111",
-            "collection_title_size_desktop": 16,
-            "collection_title_size_mobile": 14,
-            "collection_title_weight": "400"
-          }
         }
       },
       "block_order": [
-        "collection_group_T6fgHt",
-        "collection_group_LCBpAc",
-        "collection_group_mPdfVV"
+        "collection_group_ttVxWe",
+        "collection_group_NTCYNY"
       ],
-      "name": "Compresores",
+      "name": "Dobladoras CNC",
       "settings": {
         "background_color": "#ffffff",
         "container_width": 1400,
-        "heading": "Compresores",
+        "heading": "Dobladoras CNC",
         "heading_tag": "h2",
         "heading_color": "#174e96",
         "heading_size_desktop": 27,
@@ -361,7 +323,7 @@
   },
   "order": [
     "custom_hero_slider_TfXYmA",
-    "category_groups_grid_wBhr7g",
+    "category_groups_grid_698cpK",
     "main"
   ]
 }
