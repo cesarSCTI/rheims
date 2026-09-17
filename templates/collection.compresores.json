@@ -9,6 +9,60 @@
  */
 {
   "sections": {
+    "custom_hero_slider_TfXYmA": {
+      "type": "custom-hero-slider",
+      "blocks": {
+        "slide_R3HeME": {
+          "type": "slide",
+          "settings": {
+            "image": "{{ collection.image }}",
+            "overlay_color": "#003D7A",
+            "overlay_opacity": 50,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "text_alignment": "center",
+            "content_max_width": 700,
+            "heading": "Refacciones para metalmecánica y madera",
+            "heading_tag": "h2",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 42,
+            "heading_size_mobile": 32,
+            "heading_weight": "700",
+            "subtitle": "",
+            "subtitle_color": "#FFFFFF",
+            "subtitle_size_desktop": 18,
+            "subtitle_size_mobile": 16,
+            "button_label": "Ver todos los productos",
+            "button_link": "",
+            "button_background": "#FFC400",
+            "button_text_color": "#000000",
+            "button_background_hover": "#FFFFFF",
+            "button_text_color_hover": "#000000",
+            "button_radius": 10
+          }
+        }
+      },
+      "block_order": [
+        "slide_R3HeME"
+      ],
+      "name": "Hero slider configurable",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_desktop": 500,
+        "height_mobile": 520,
+        "padding_horizontal_desktop": 40,
+        "padding_vertical_desktop": 40,
+        "padding_horizontal_mobile": 20,
+        "padding_vertical_mobile": 30,
+        "arrow_background": "#FFFFFF",
+        "arrow_color": "#111111",
+        "dot_color": "#FFFFFF",
+        "dot_active_color": "#FFC400"
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -157,6 +211,7 @@
     }
   },
   "order": [
+    "custom_hero_slider_TfXYmA",
     "main"
   ]
 }
