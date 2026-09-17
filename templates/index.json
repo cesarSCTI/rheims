@@ -149,7 +149,7 @@
         "heading_tag": "h3",
         "heading_color": "#174895",
         "button_label": "Ver todos los productos",
-        "button_link": "",
+        "button_link": "shopify://collections",
         "button_font": "body",
         "button_background_color": "#f0af0b",
         "button_text_color": "{{ settings.color_palette.foreground }}",
