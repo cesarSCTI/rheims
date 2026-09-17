@@ -1,3 +1,7 @@
+{% if section.settings.rheims_layout %}
+  {{ 'rheims-product.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
 <script type="application/ld+json">
   {{ closest.product | structured_data }}
 </script>
@@ -382,9 +386,18 @@
     }
   ],
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "rheims_layout",
+      "label": "Diseño de producto Rheims",
+      "default": false
+    },
     {
       "type": "header",
       "content": "t:content.layout"

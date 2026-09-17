@@ -1,0 +1,85 @@
+{% liquid
+  assign application = product.metafields.custom.application.value | default: section.settings.application
+%}
+{% capture rows %}
+  {% for block in section.blocks %}
+    {% liquid
+      assign value = block.settings.value
+      if block.settings.metafield_key != blank
+        assign product_value = product.metafields.custom[block.settings.metafield_key].value
+        assign value = product_value | default: value
+      endif
+    %}
+    {% if value != blank or request.design_mode %}
+      <tr {{ block.shopify_attributes }}>
+        <th scope="row">{{ block.settings.title | escape }}</th>
+        <td>{% if value != blank %}{{ value | escape | newline_to_br }}{% else %}Agrega un valor o conecta un metacampo.{% endif %}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+{% assign rows_content = rows | strip %}
+{% if rows_content != blank or application != blank or request.design_mode %}
+  {{ 'rheims-product.css' | asset_url | stylesheet_tag }}
+  <section class="section section--page-width rheims-specifications" aria-labelledby="Specifications-{{ section.id }}">
+    <div class="rheims-specifications__inner">
+      <h2 id="Specifications-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+      {% if application != blank %}<div class="rheims-specifications__application"><strong>Aplicación:</strong><br>{{ application | escape | newline_to_br }}</div>{% endif %}
+      {% if rows_content != blank %}<table><caption class="visually-hidden">{{ section.settings.heading | escape }}</caption><tbody>{{ rows }}</tbody></table>{% endif %}
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "Especificaciones técnicas",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Especificaciones técnicas"
+    },
+    {
+      "type": "textarea",
+      "id": "application",
+      "label": "Aplicación",
+      "info": "Puedes usar custom.application (texto) para definirla por producto."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "specification",
+      "name": "Especificación",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nombre",
+          "default": "Característica"
+        },
+        {
+          "type": "textarea",
+          "id": "value",
+          "label": "Valor"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Clave del metacampo custom",
+          "info": "Metacampo de texto del producto, por ejemplo: material. Tiene prioridad sobre Valor."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Especificaciones técnicas",
+      "blocks": [
+        {
+          "type": "specification"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

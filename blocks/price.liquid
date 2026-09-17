@@ -53,6 +53,7 @@
 >
   {% render 'price',
     show_unit_price: true,
+    show_discount: block_settings.show_discount,
     product_resource: product_resource,
     show_sale_price_first: block_settings.show_sale_price_first
   %}
@@ -95,6 +96,12 @@
   "name": "t:names.product_price",
   "tag": null,
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_discount",
+      "label": "Mostrar porcentaje de descuento",
+      "default": false
+    },
     {
       "type": "paragraph",
       "content": "t:content.resource_reference_product_price"

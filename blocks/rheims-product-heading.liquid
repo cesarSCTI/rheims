@@ -1,0 +1,31 @@
+<div class="rheims-product-heading" {{ block.shopify_attributes }}>
+  <h1>{{ closest.product.title | escape }}</h1>
+  {% if block.settings.show_favorite %}
+    <rheims-product-favorite data-product-id="{{ closest.product.id }}">
+      <button type="button" aria-pressed="false" aria-label="Guardar producto en este dispositivo" title="Guardar producto en este dispositivo" hidden>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 21s-9-5.5-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-9 12-9 12Z"/></svg>
+      </button>
+    </rheims-product-favorite>
+    <script src="{{ 'rheims-product-favorite.js' | asset_url }}" type="module" fetchpriority="low"></script>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Título de producto Rheims",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_favorite",
+      "label": "Mostrar favorito local",
+      "info": "Guarda el favorito únicamente en este navegador.",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Título de producto Rheims"
+    }
+  ]
+}
+{% endschema %}

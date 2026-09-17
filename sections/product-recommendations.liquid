@@ -1,3 +1,7 @@
+{% if section.settings.rheims_layout %}
+  {{ 'rheims-product.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
 <script
   src="{{ 'product-recommendations.js' | asset_url }}"
   type="module"
@@ -34,7 +38,7 @@
 {% render 'product-recommendations-styles' %}
 <product-recommendations
   id="product-recommendations-{{ section.id }}"
-  class="product-recommendations"
+  class="product-recommendations{% if section.settings.rheims_layout %} rheims-related{% endif %}"
   data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.max_products }}"
   data-section-id="{{ section.id }}"
   data-product-id="{{ section.settings.product.id | default: product.id }}"
@@ -193,7 +197,10 @@
 {
   "name": "t:names.product_recommendations",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "blocks": [
     {
@@ -228,6 +235,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "rheims_layout",
+      "label": "Diseño de producto Rheims",
+      "default": false
+    },
     {
       "type": "product",
       "id": "product",
@@ -551,10 +564,16 @@
               }
             }
           },
-          "block_order": ["product-card-gallery", "product_title", "price"]
+          "block_order": [
+            "product-card-gallery",
+            "product_title",
+            "price"
+          ]
         }
       },
-      "block_order": ["header"]
+      "block_order": [
+        "header"
+      ]
     }
   ]
 }

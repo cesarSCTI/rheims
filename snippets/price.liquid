@@ -3,6 +3,7 @@
   It is used in the product block,featured product block, and the product card block.
 
   @param {product} product_resource - The product to render
+  @param {boolean} [show_discount] - Show the selected variant discount
   @param {boolean} [show_unit_price] - Whether to show the unit price
   @param {boolean} [show_sale_price_first] - Whether to show the sale price first
 {%- enddoc -%}
@@ -112,6 +113,10 @@
     {% else %}
       <span class="price">{{ price | default: '&nbsp;' }}</span>
     {% endif %}
+  {% endif %}
+  {% if show_discount and show_compare_price and has_volume_pricing != true %}
+    {% assign discount_percent = selected_variant.compare_at_price | minus: selected_variant.price | times: 100.0 | divided_by: selected_variant.compare_at_price | round %}
+    <span class="rheims-discount">-{{ discount_percent }}%</span>
   {% endif %}
   {%- if selected_variant.unit_price and show_unit_price %}
     {%- liquid

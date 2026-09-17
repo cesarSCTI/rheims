@@ -1,0 +1,69 @@
+{% liquid
+  assign note = block.settings.text
+  if block.settings.metafield_key != blank
+    assign product_note = closest.product.metafields.custom[block.settings.metafield_key].value
+    assign note = product_note | default: note
+  endif
+%}
+{% if note != blank or request.design_mode %}
+  <div class="rheims-product-note rheims-product-note--{{ block.settings.style }}" {{ block.shopify_attributes }}>
+    {% if block.settings.style == 'warranty' %}
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg>
+    {% endif %}
+    {% if note != blank %}
+      {% if block.settings.style == 'delivery' %}
+        {% assign delivery_lines = note | newline_to_br | split: '<br />' %}
+        <ul>{% for line in delivery_lines %}{% assign delivery_line = line | strip %}{% if delivery_line != blank %}<li>{{ delivery_line | escape }}</li>{% endif %}{% endfor %}</ul>
+      {% else %}
+        <div>{{ note | escape | newline_to_br }}</div>
+      {% endif %}
+    {% else %}<div>Configura aquí la información de {{ block.settings.title | downcase | escape }}.</div>{% endif %}
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Información del producto",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Nombre",
+      "default": "Entrega"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Estilo",
+      "options": [
+        {
+          "value": "warranty",
+          "label": "Garantía con icono"
+        },
+        {
+          "value": "delivery",
+          "label": "Entrega con fondo gris"
+        }
+      ],
+      "default": "delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Información",
+      "info": "Usa una línea por zona de entrega. Deja vacío para ocultar."
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Clave del metacampo custom",
+      "info": "Metacampo de texto del producto. Tiene prioridad sobre la información escrita aquí."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Información del producto"
+    }
+  ]
+}
+{% endschema %}
