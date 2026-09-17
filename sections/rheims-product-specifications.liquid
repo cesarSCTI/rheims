@@ -4,22 +4,22 @@
 {% capture rows %}
   {% for block in section.blocks %}
     {% liquid
-      assign value = block.settings.value
+      assign value = ''
       if block.settings.metafield_key != blank
         assign product_value = product.metafields.custom[block.settings.metafield_key].value
-        assign value = product_value | default: value
+        assign value = product_value | strip
       endif
     %}
-    {% if value != blank or request.design_mode %}
+    {% if value != blank %}
       <tr {{ block.shopify_attributes }}>
         <th scope="row">{{ block.settings.title | escape }}</th>
-        <td>{% if value != blank %}{{ value | escape | newline_to_br }}{% else %}Agrega un valor o conecta un metacampo.{% endif %}</td>
+        <td>{{ value | escape | newline_to_br }}</td>
       </tr>
     {% endif %}
   {% endfor %}
 {% endcapture %}
 {% assign rows_content = rows | strip %}
-{% if rows_content != blank or application != blank or request.design_mode %}
+{% if rows_content != blank or application != blank %}
   {{ 'rheims-product.css' | asset_url | stylesheet_tag }}
   <section class="section section--page-width rheims-specifications" aria-labelledby="Specifications-{{ section.id }}">
     <div class="rheims-specifications__inner">
@@ -58,15 +58,10 @@
           "default": "Característica"
         },
         {
-          "type": "textarea",
-          "id": "value",
-          "label": "Valor"
-        },
-        {
           "type": "text",
           "id": "metafield_key",
           "label": "Clave del metacampo custom",
-          "info": "Metacampo de texto del producto, por ejemplo: material. Tiene prioridad sobre Valor."
+          "info": "Clave exacta dentro de custom. Si el producto no tiene valor, la fila se oculta."
         }
       ]
     }
@@ -76,7 +71,46 @@
       "name": "Especificaciones técnicas",
       "blocks": [
         {
-          "type": "specification"
+          "type": "specification",
+          "settings": {
+            "title": "Tipo",
+            "metafield_key": "tipo"
+          }
+        },
+        {
+          "type": "specification",
+          "settings": {
+            "title": "Diámetro exterior",
+            "metafield_key": "diametro_exterior"
+          }
+        },
+        {
+          "type": "specification",
+          "settings": {
+            "title": "Rosca de acoplamiento",
+            "metafield_key": "rosca_de_acoplamiento"
+          }
+        },
+        {
+          "type": "specification",
+          "settings": {
+            "title": "Altura",
+            "metafield_key": "altura"
+          }
+        },
+        {
+          "type": "specification",
+          "settings": {
+            "title": "Acabado",
+            "metafield_key": "acabado"
+          }
+        },
+        {
+          "type": "specification",
+          "settings": {
+            "title": "Cabezales compatibles",
+            "metafield_key": "cabezales_compatibles"
+          }
         }
       ]
     }

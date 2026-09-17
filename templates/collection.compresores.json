@@ -241,7 +241,7 @@
           "type": "_product-card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
+            "product_card_gap": 8,
             "background_color": "",
             "border": "none",
             "border_width": 1,
@@ -249,7 +249,7 @@
             "border_color": "",
             "border_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 8,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -257,12 +257,12 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
                 "border_color": "",
-                "border_radius": 0,
+                "border_radius": 14,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -277,9 +277,9 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "paragraph",
+                "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.875rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -298,6 +298,7 @@
             "price_EzJzMm": {
               "type": "price",
               "settings": {
+                "show_discount": false,
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
@@ -329,7 +330,8 @@
                 "product_swatches_padding_left": 0,
                 "product_swatches_padding_right": 0
               },
-              "blocks": {}
+              "blocks": {},
+              "disabled": true
             }
           },
           "block_order": [

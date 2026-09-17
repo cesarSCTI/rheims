@@ -1,0 +1,8 @@
+/* Shared collection and related-product card presentation. */
+.rheims-catalog .card-gallery { background: #e9e9e9; border-radius: 14px; overflow: hidden; }
+.rheims-catalog .card-gallery img { object-fit: contain; }
+.rheims-catalog product-price .price { color: #1550ad; font-size: 18px; font-weight: 500; }
+.rheims-catalog .product-card__content { font-size: 14px; }
+@media screen and (max-width: 749px) {
+  .rheims-catalog product-price .price { font-size: 16px; }
+}

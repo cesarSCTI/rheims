@@ -36,10 +36,6 @@
 .rheims-specifications th, .rheims-specifications td { padding: 12px 18px; border: 0; border-bottom: 1px solid #e5e5e5; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
 .rheims-specifications th { width: 23%; font-weight: 400; }
 .rheims-related .section-resource-list__content h2 { color: #1550ad; font-size: clamp(24px, 2.4vw, 32px); font-weight: 600; }
-.rheims-related .card-gallery { background: #e9e9e9; border-radius: 14px; overflow: hidden; }
-.rheims-related .card-gallery img { object-fit: contain; }
-.rheims-related product-price .price { color: #1550ad; font-size: 18px; font-weight: 500; }
-.rheims-related .product-card__content { font-size: 14px; }
 @media screen and (min-width: 750px) {
   .rheims-product .product-information__grid.product-information--media-left:not(.product-information--media-none) > .product-information__media,
   .rheims-product .product-information__grid.product-information--media-left:not(.product-information--media-none) > .product-details { padding-inline: 0; }
@@ -51,5 +47,4 @@
   .rheims-specifications { padding-block-start: 36px; }
   .rheims-specifications th { width: 36%; }
   .rheims-specifications th, .rheims-specifications td { padding: 10px 8px; font-size: 13px; }
-  .rheims-related product-price .price { font-size: 16px; }
 }

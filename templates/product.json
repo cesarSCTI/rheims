@@ -336,48 +336,42 @@
           "type": "specification",
           "settings": {
             "title": "Tipo",
-            "value": "",
-            "metafield_key": "type"
+            "metafield_key": "tipo"
           }
         },
         "row_1": {
           "type": "specification",
           "settings": {
             "title": "Diámetro exterior",
-            "value": "",
-            "metafield_key": "outer_diameter"
+            "metafield_key": "diametro_exterior"
           }
         },
         "row_2": {
           "type": "specification",
           "settings": {
             "title": "Rosca de acoplamiento",
-            "value": "",
-            "metafield_key": "thread"
+            "metafield_key": "rosca_de_acoplamiento"
           }
         },
         "row_3": {
           "type": "specification",
           "settings": {
             "title": "Altura",
-            "value": "",
-            "metafield_key": "height"
+            "metafield_key": "altura"
           }
         },
         "row_4": {
           "type": "specification",
           "settings": {
             "title": "Acabado",
-            "value": "",
-            "metafield_key": "finish"
+            "metafield_key": "acabado"
           }
         },
         "row_5": {
           "type": "specification",
           "settings": {
             "title": "Cabezales compatibles",
-            "value": "",
-            "metafield_key": "compatible_heads"
+            "metafield_key": "cabezales_compatibles"
           }
         }
       },
