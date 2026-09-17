@@ -1,0 +1,366 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_hero_slider_TfXYmA": {
+      "type": "custom-hero-slider",
+      "blocks": {
+        "slide_R3HeME": {
+          "type": "slide",
+          "settings": {
+            "image": "{{ collection.image }}",
+            "overlay_color": "#003D7A",
+            "overlay_opacity": 50,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "text_alignment": "center",
+            "content_max_width": 700,
+            "heading": "Refacciones para metalmecánica y madera",
+            "heading_tag": "h2",
+            "heading_color": "#FFFFFF",
+            "heading_size_desktop": 42,
+            "heading_size_mobile": 32,
+            "heading_weight": "700",
+            "subtitle": "",
+            "subtitle_color": "#FFFFFF",
+            "subtitle_size_desktop": 18,
+            "subtitle_size_mobile": 16,
+            "button_label": "",
+            "button_link": "",
+            "button_background": "#FFC400",
+            "button_text_color": "#000000",
+            "button_background_hover": "#FFFFFF",
+            "button_text_color_hover": "#000000",
+            "button_radius": 10
+          }
+        }
+      },
+      "block_order": [
+        "slide_R3HeME"
+      ],
+      "name": "Hero slider configurable",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_desktop": 500,
+        "height_mobile": 520,
+        "padding_horizontal_desktop": 40,
+        "padding_vertical_desktop": 40,
+        "padding_horizontal_mobile": 20,
+        "padding_vertical_mobile": 30,
+        "arrow_background": "#FFFFFF",
+        "arrow_color": "#111111",
+        "dot_color": "#FFFFFF",
+        "dot_active_color": "#FFC400"
+      }
+    },
+    "category_groups_grid_wBhr7g": {
+      "type": "category-groups-grid",
+      "blocks": {
+        "collection_group_T6fgHt": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Filtros",
+            "heading_tag": "h3",
+            "collections": [
+              "compresores-filtros-filtros-de-aire",
+              "compresores-filtros-separadores-aire-aceite",
+              "compresores-filtros-filtros-de-aceite",
+              "compresores-filtros-filtros-de-precision-coalescentes"
+            ],
+            "custom_labels": "",
+            "desktop_width": "8",
+            "tablet_width": "12",
+            "columns_desktop": 4,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": false,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        },
+        "collection_group_LCBpAc": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Insumos",
+            "heading_tag": "h3",
+            "collections": [
+              "compresores-insumos-aceite",
+              "compresores-insumos-material-desecante"
+            ],
+            "custom_labels": "",
+            "desktop_width": "4",
+            "tablet_width": "12",
+            "columns_desktop": 2,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": true,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        },
+        "collection_group_mPdfVV": {
+          "type": "collection_group",
+          "settings": {
+            "heading": "Refacciones",
+            "heading_tag": "h3",
+            "collections": [
+              "compresores-refacciones-valvulas",
+              "compresores-refacciones-tornillos",
+              "compresores-refacciones-sensores"
+            ],
+            "custom_labels": "",
+            "desktop_width": "6",
+            "tablet_width": "12",
+            "columns_desktop": 3,
+            "columns_tablet": 3,
+            "columns_mobile": "2",
+            "column_gap": 14,
+            "row_gap": 20,
+            "column_gap_mobile": 12,
+            "row_gap_mobile": 20,
+            "show_vertical_separator": false,
+            "heading_color": "#111111",
+            "heading_size_desktop": 20,
+            "heading_size_mobile": 19,
+            "heading_weight": "700",
+            "heading_alignment": "left",
+            "image_size_desktop": 120,
+            "image_size_mobile": 100,
+            "collection_title_color": "#111111",
+            "collection_title_size_desktop": 16,
+            "collection_title_size_mobile": 14,
+            "collection_title_weight": "400"
+          }
+        }
+      },
+      "block_order": [
+        "collection_group_T6fgHt",
+        "collection_group_LCBpAc",
+        "collection_group_mPdfVV"
+      ],
+      "name": "Compresores",
+      "settings": {
+        "background_color": "#ffffff",
+        "container_width": 1400,
+        "heading": "Compresores",
+        "heading_tag": "h2",
+        "heading_color": "#174e96",
+        "heading_size_desktop": 27,
+        "heading_size_mobile": 24,
+        "heading_weight": "700",
+        "heading_alignment": "left",
+        "heading_line_height": 120,
+        "heading_letter_spacing": 0,
+        "heading_bottom_spacing": 16,
+        "heading_bottom_spacing_mobile": 20,
+        "groups_horizontal_gap": 20,
+        "groups_vertical_gap": 22,
+        "groups_vertical_gap_mobile": 36,
+        "separator_color": "#9abeff",
+        "separator_width": 1,
+        "separator_spacing": 20,
+        "hide_vertical_separators_mobile": true,
+        "show_bottom_separator": true,
+        "bottom_separator_color": "#9abeff",
+        "bottom_separator_width": 1,
+        "bottom_separator_spacing": 24,
+        "image_bottom_spacing": 8,
+        "image_hover_scale": 103,
+        "collection_title_line_height": 125,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25,
+        "padding_horizontal_mobile": 20
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "background_color": "",
+            "text_color": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "background_color": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "paragraph",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "text_color": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "swatches": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm",
+            "swatches"
+          ]
+        }
+      },
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 24,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "background_color": "",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    }
+  },
+  "order": [
+    "custom_hero_slider_TfXYmA",
+    "category_groups_grid_wBhr7g",
+    "main"
+  ]
+}
