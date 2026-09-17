@@ -239,7 +239,7 @@
               "settings": {
                 "title": "Entrega",
                 "style": "delivery",
-                "text": "",
+                "text": "Entrega disponible para toda la republica mexicana.",
                 "metafield_key": "delivery"
               },
               "blocks": {}
