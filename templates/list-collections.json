@@ -999,9 +999,9 @@
             "collections": [
               "perifericos-y-equipo-auxiliar-chillers-unidades-de-enfriamiento",
               "perifericos-y-equipo-auxiliar-transformadores",
-              "corte-laser-perifericos-reguladores",
               "perifericos-y-equipo-auxiliar-fuente-laser-resonador",
-              "perifericos-y-equipo-auxiliar-cabezales"
+              "perifericos-y-equipo-auxiliar-cabezales",
+              "perifericos-y-equipo-auxiliar-reguladores"
             ],
             "custom_labels": "",
             "desktop_width": "12",
