@@ -1,8 +1,0 @@
-feat: custom link block for the categories drawer
-
-New blocks/_category-custom-link.liquid, addable directly under the
-"Menu de categorias" block (peer to _category-group rows, not nested
-inside one). Fully manual: title, URL and a short copy line, no
-Collection dependency.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
