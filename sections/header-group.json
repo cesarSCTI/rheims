@@ -286,7 +286,7 @@
               "name": "Dobladoras CNC",
               "settings": {
                 "title": "Dobladoras CNC",
-                "open_by_default": false
+                "open_by_default": true
               },
               "blocks": {
                 "category_link_DMENBT": {
