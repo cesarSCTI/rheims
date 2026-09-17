@@ -323,6 +323,7 @@ class ProductFormComponent extends Component {
   /** @param {Event} event */
   handleSubmit(event) {
     event.preventDefault();
+    if (this.dataset.saleEligible !== 'true') return;
 
     if (this.#variantChangeInProgress) {
       this.#addToCartQueue.push(this.#createQueuedAddToCartItem());
@@ -358,6 +359,7 @@ class ProductFormComponent extends Component {
    * @param {Event} [event]
    */
   #processAddToCart(overrideVariantId, overrideQuantity, event) {
+    if (this.dataset.saleEligible !== 'true') return;
     const { addToCartTextError } = this.refs;
 
     if (this.#timeout) clearTimeout(this.#timeout);
@@ -797,6 +799,14 @@ class ProductFormComponent extends Component {
         return;
       }
 
+      const eligibleForm = html.querySelector(`product-form-component[data-product-id="${this.dataset.productId}"][data-sale-eligible="true"]`);
+      this.dataset.saleEligible = String(Boolean(eligibleForm));
+      this.hidden = !eligibleForm;
+      if (!eligibleForm) {
+        this.#addToCartQueue.length = 0;
+        return;
+      }
+
       const { variantId } = this.refs;
       variantId.value = resource?.id ?? '';
 
@@ -943,6 +953,10 @@ class ProductFormComponent extends Component {
    * selections in #onProductSelect, so no further UI change is needed.
    */
   async #drainAddToCartQueue() {
+    if (this.dataset.saleEligible !== 'true') {
+      this.#addToCartQueue.length = 0;
+      return;
+    }
     if (this.#addToCartQueue.length === 0) return;
 
     const queuedItems = [...this.#addToCartQueue];

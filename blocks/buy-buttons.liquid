@@ -35,6 +35,7 @@
   endif
 %}
 
+{% if product.tags contains 'venta' %}
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {% if block_settings.text_color != blank %}
@@ -45,6 +46,7 @@
   {%- if product != blank -%}
     {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
     <product-form-component
+      data-sale-eligible="true"
       data-section-id="{{ section.id }}"
       data-product-id="{{ product.id }}"
       data-product-url="{{ product.url }}"
@@ -253,7 +255,9 @@
   {%- endif -%}
 </span>
 
-{% if block_settings.show_pickup_availability %}
+{% endif %}
+
+{% if block_settings.show_pickup_availability and product.tags contains 'venta' %}
   <script
     src="{{ 'local-pickup.js' | asset_url }}"
     type="module"

@@ -17,7 +17,7 @@
 %}
 
 {% capture accelerated_checkout_button %}
-  {% if product != blank and form_obj != blank %}
+  {% if product != blank and form_obj != blank and product.tags contains 'venta' %}
     {{ form_obj | payment_button }}
   {% endif %}
 {% endcapture %}

@@ -227,7 +227,12 @@ class StickyAddToCartComponent extends Component {
 
         // Get the new sticky add to cart HTML from the server response
         const newStickyAddToCart = /** @type {HTMLElement | null} */ (html.querySelector('sticky-add-to-cart'));
-        if (!newStickyAddToCart) return;
+        if (!newStickyAddToCart) {
+          this.dataset.variantAvailable = 'false';
+          this.refs.addToCartButton.disabled = true;
+          this.refs.stickyBar.dataset.stuck = 'false';
+          return;
+        }
 
         const newStickyBar = newStickyAddToCart.querySelector('[ref="stickyBar"]');
         if (!newStickyBar) return;

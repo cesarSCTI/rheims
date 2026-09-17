@@ -18,6 +18,7 @@
   endif
 %}
 
+{% if product.tags contains 'venta' %}
 <div
   class="section-background{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}"
 ></div>
@@ -470,6 +471,8 @@
     </div>
   </quick-order-list-component>
 </div>
+
+{% endif %}
 
 {% stylesheet %}
   .quick-order-list {

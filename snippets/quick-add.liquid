@@ -6,6 +6,7 @@
   @param {object} [block] - The block object
 {%- enddoc -%}
 
+{% if product.tags contains 'venta' %}
 {% liquid
   assign product_form_id = 'QuickAdd-ProductForm-' | append: product.id | append: '-' | append: block.id
   assign add_to_cart_text = 'actions.add' | t
@@ -89,6 +90,7 @@
 >
   {% if render_add %}
     <product-form-component
+      data-sale-eligible="true"
       data-section-id="{{ section_id }}"
       data-product-id="{{ product.id }}"
       on:submit="/handleSubmit"
@@ -155,3 +157,5 @@
 {% render 'video-background-styles' %}
 {% render 'video-placeholder-styles' %}
 {% render 'deferred-media-product-model-styles' %}
+
+{% endif %}

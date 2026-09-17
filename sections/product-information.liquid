@@ -29,7 +29,7 @@
 {% render 'deferred-media-product-model-styles' %}
 {% render 'deferred-media-video-styles' %}
 
-{% if section.settings.enable_sticky_add_to_cart %}
+{% if section.settings.enable_sticky_add_to_cart and product.tags contains 'venta' %}
   {% render 'fly-to-cart-styles' %}
 
   {% liquid
