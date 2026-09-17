@@ -1,0 +1,83 @@
+{%- doc -%}
+  Renders a fully custom link inside the categories drawer, as a peer of the
+  `_category-group` rows (not nested inside one). Unlike `_category-link`,
+  this isn't tied to a Collection: title, URL and the short copy line under
+  it are all set directly on the block.
+
+  @example
+  {% content_for 'blocks' %}
+{%- enddoc -%}
+
+{% liquid
+  assign block_settings = block.settings
+%}
+
+<li
+  class="categories-drawer__custom-link-item"
+  {{ block.shopify_attributes }}
+>
+  <a
+    href="{{ block_settings.url | default: '#' }}"
+    class="categories-drawer__custom-link"
+  >
+    <span class="categories-drawer__custom-link-title">
+      {{ block_settings.title | default: 'Link' }}
+    </span>
+    {% if block_settings.copy != blank %}
+      <span class="categories-drawer__custom-link-copy">{{ block_settings.copy }}</span>
+    {% endif %}
+  </a>
+</li>
+
+{% stylesheet %}
+  .categories-drawer__custom-link-item {
+    list-style: none;
+    border-block-end: var(--style-border-width, 1px) solid var(--color-border);
+  }
+
+  .categories-drawer__custom-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-3xs, 2px);
+    padding-block: var(--padding-md);
+    text-decoration: none;
+    min-height: var(--minimum-touch-target);
+    justify-content: center;
+  }
+
+  .categories-drawer__custom-link-title {
+    font-family: var(--font-heading--family);
+    font-weight: var(--font-heading--weight);
+    font-size: var(--font-size--md);
+    color: var(--color-primary-button-background, var(--color-foreground));
+  }
+
+  .categories-drawer__custom-link-copy {
+    font-size: var(--font-size--xs);
+    color: rgb(var(--color-foreground-rgb) / var(--opacity-muted-text, 0.6));
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.category_custom_link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:settings.title"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "t:settings.link"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "t:settings.description"
+    }
+  ]
+}
+{% endschema %}
