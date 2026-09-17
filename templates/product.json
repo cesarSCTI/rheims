@@ -181,7 +181,7 @@
               "settings": {
                 "title": "Garantía",
                 "style": "warranty",
-                "text": "",
+                "text": "Garantía de 90 días",
                 "metafield_key": "warranty"
               },
               "blocks": {}
