@@ -209,14 +209,15 @@
                 "link_corte_software"
               ]
             },
-            "group_soldadura_laser": {
+            "category_group_JrxTaC": {
               "type": "_category-group",
+              "name": "Soldadura láser",
               "settings": {
-                "title": "Soldadura láser",
+                "title": "Corte láser",
                 "open_by_default": true
               },
               "blocks": {
-                "link_soldadura_componentes_vitales": {
+                "category_link_aJTaAy": {
                   "type": "_category-link",
                   "settings": {
                     "collection": "soldadura-laser-componentes-vitales",
@@ -224,10 +225,60 @@
                     "text_color": ""
                   },
                   "blocks": {}
+                },
+                "category_link_x6B6E4": {
+                  "type": "_category-link",
+                  "settings": {
+                    "collection": "corte-laser-consumibles",
+                    "title": "Consumibles",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                },
+                "category_link_y3EjaL": {
+                  "type": "_category-link",
+                  "settings": {
+                    "collection": "corte-laser-herramientas-de-limpieza",
+                    "title": "Herramientas de limpieza",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                },
+                "category_link_ULp6ga": {
+                  "type": "_category-link",
+                  "settings": {
+                    "collection": "soldadura-laser-refacciones",
+                    "title": "Refacciones",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                },
+                "category_link_FfK8CG": {
+                  "type": "_category-link",
+                  "settings": {
+                    "collection": "soldadura-laser-perifericos",
+                    "title": "Periféricos",
+                    "text_color": ""
+                  },
+                  "blocks": {}
+                },
+                "category_link_LYMHrH": {
+                  "type": "_category-link",
+                  "settings": {
+                    "collection": "corte-laser-software",
+                    "title": "Software",
+                    "text_color": ""
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
-                "link_soldadura_componentes_vitales"
+                "category_link_aJTaAy",
+                "category_link_x6B6E4",
+                "category_link_y3EjaL",
+                "category_link_ULp6ga",
+                "category_link_FfK8CG",
+                "category_link_LYMHrH"
               ]
             }
           },
@@ -236,7 +287,7 @@
             "category_group_YGGzGj",
             "group_manipuladores",
             "group_corte_laser",
-            "group_soldadura_laser"
+            "category_group_JrxTaC"
           ]
         }
       },

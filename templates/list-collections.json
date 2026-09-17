@@ -673,8 +673,8 @@
             "heading": "Componentes vitales",
             "heading_tag": "h3",
             "collections": [
-              "corte-laser-componentes-vitales-cabezales",
-              "soldadura-laser-componentes-vitales-fuente-laser-resonador"
+              "soldadura-laser-componentes-vitales-fuente-laser-resonador",
+              "soldadura-laser-componentes-vitales-cabezales"
             ],
             "custom_labels": "",
             "desktop_width": "4",
