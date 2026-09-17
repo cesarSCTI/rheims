@@ -32,7 +32,7 @@
             "subtitle_color": "#FFFFFF",
             "subtitle_size_desktop": 18,
             "subtitle_size_mobile": 16,
-            "button_label": "Ver todos los productos",
+            "button_label": "",
             "button_link": "",
             "button_background": "#FFC400",
             "button_text_color": "#000000",
