@@ -16,27 +16,27 @@
           "type": "slide",
           "settings": {
             "image": "{{ collection.image }}",
-            "overlay_color": "#003D7A",
+            "overlay_color": "#003d7a",
             "overlay_opacity": 50,
             "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "text_alignment": "center",
             "content_max_width": 700,
-            "heading": "Refacciones para metalmecánica y madera",
+            "heading": "Soldadura láser",
             "heading_tag": "h2",
-            "heading_color": "#FFFFFF",
+            "heading_color": "#ffffff",
             "heading_size_desktop": 42,
             "heading_size_mobile": 32,
             "heading_weight": "700",
             "subtitle": "",
-            "subtitle_color": "#FFFFFF",
+            "subtitle_color": "#ffffff",
             "subtitle_size_desktop": 18,
             "subtitle_size_mobile": 16,
             "button_label": "",
             "button_link": "",
-            "button_background": "#FFC400",
+            "button_background": "#ffc400",
             "button_text_color": "#000000",
-            "button_background_hover": "#FFFFFF",
+            "button_background_hover": "#ffffff",
             "button_text_color_hover": "#000000",
             "button_radius": 10
           }
@@ -57,10 +57,10 @@
         "padding_vertical_desktop": 40,
         "padding_horizontal_mobile": 20,
         "padding_vertical_mobile": 30,
-        "arrow_background": "#FFFFFF",
+        "arrow_background": "#ffffff",
         "arrow_color": "#111111",
-        "dot_color": "#FFFFFF",
-        "dot_active_color": "#FFC400"
+        "dot_color": "#ffffff",
+        "dot_active_color": "#ffc400"
       }
     },
     "category_groups_grid_wBhr7g": {
@@ -298,6 +298,7 @@
             "price_EzJzMm": {
               "type": "price",
               "settings": {
+                "show_discount": false,
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
