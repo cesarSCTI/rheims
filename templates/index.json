@@ -33,7 +33,7 @@
             "subtitle_size_desktop": 18,
             "subtitle_size_mobile": 16,
             "button_label": "Ver todos los productos",
-            "button_link": "shopify://collections/all",
+            "button_link": "shopify://collections",
             "button_background": "#ffc400",
             "button_text_color": "#000000",
             "button_background_hover": "#ffffff",
