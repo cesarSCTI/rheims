@@ -208,6 +208,7 @@
       "block_order": [
         "slide_XVQUVW"
       ],
+      "disabled": true,
       "name": "Hero slider configurable",
       "settings": {
         "autoplay": true,
